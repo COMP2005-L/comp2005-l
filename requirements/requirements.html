@@ -7,183 +7,33 @@
     <link rel="stylesheet" href="requirements.css">
  </head>
  <body>
-  <h1>Introduction</h1>
-
-    <h2>Project Description</h2>
-    <p>The client is the instructor for COMP2005 course at the Computer
-         Science
-         Department, Memorial University of Newfoundland</p>
-    <p>The project description presented by the client is as follows:
-        <blockquote>The COMP2005 course involves use of tools and environments
-        which students have to "pick-up" along the way, with limited instruction.
-        This presents a challenge for students at different levels of
-        experience with software development. I would like them to have a
-        collaborative tool for exchanging information on materials, tutorials,
-        tools, organization and other helpful resources or links. It should be
-        along the lines of other software development forums such as Stack
-        Overflow. </blockquote> </p>
-    <p>The project team is a group of up to 5 students registered in COMP2005
-        for the Winter 2018 semester. </p>
-    <p>
-
-    <h2>Methodology</h2>
-        <p>Accepted techniques for requirements gathering include:
-            <ul>
-                <li>Client interview</li>
-                <li>User group dicussion</li>
-                <li>User stories</li>
-                <li>UML use case analysis</li>
-            </ul></p>
-        <p>In their first assignment, each student is tasked with applying a
-         selection of techniques and producing three possible requirements for
-         this project.  At least
-         one of the three requirements produced is to be original and added to
-         the requirements list in this document.
-
-       <h3>Documentation</h3>
-
-        <h4>Requirements list HTML tags and conventions</h4>
-            <p>HTML tags, attributes, and styles have been defined for the
-                Requirements List section of this document as follows:
-            <ul>
-                <li>CSS styling of the requirements list is maintained in the file "requirements.css".
-                    To change the list appearance, modify the CSS file. </li>
-                <li>the <code>rqlist</code> CSS class identifies a
-                    requirements list &lt;ol&gt; tag</li>
-                <li>Each requirement is a list item using an &lt;li&gt; tag</li>
-                <li>Each requirement list item has a <code>data-moscow</code>
-                    attribute identifying its MOSCOW priority class &lt;li data-moscow=m&gt;</li>
-                <li>Each requirement starts with a short imperative statement in
-                    present tense and active voice that captures the intent of the requirement. </li>
-                <li>A fuller description of the requirement is included following the short statement.
-                      The description may contain concerns and issues that are unresolved or other commentary.
-                      The description is classed <code>rqdesc</code> with a &lt;p class=rqdesc&gt; tag</li>
-                <li>A requirement data element follows the short statement.
-                    This data includes the requirment author's login id and the date and time the
-                    requirement was submitted
-                      This paragraph is classed <code>rqdata</code> with a &lt;p class=rqdata&gt; tag</li>
-                <li>A requirement validation element follows the requirement data element.
-                    This element references the methods and documents used to validate the requirements.
-                    Explanation of validity and links to other media files such as use case analyses
-                    should be supplied.
-                      This paragraph is classed <code>rqvali</code> with a &lt;p class=rqvali&gt; tag</li>
-                <li>A requirement verfication plan element follows the requirement data element.
-                    This element references the methods and documents used to validate the requirements.
-                    Links to other media files such as use case analyses are encouraged.
-                      This paragraph is classed <code>rqveri</code> with a &lt;p class=rqveri&gt; tag</li>
-                <li>A requirement may contain a &lt;ol&gt; tagged sub-list of requirements.
-                    In this case, the list item may be a title for a sub-category of requirements and may
-                    or may not be a requirement itself.
-                    If the item is a simple category title and not a requirement, it will not have
-                    a <code>data-moscow</code> attribute and it will not contain any paragraph
-                    tagged details.</li>
-             </ul>
  <h1>Requirements List</h1>
     <ol class="rqlist">
         <li> Functionality
             <ol>
-                <li data-moscow=m> Users can create topic threads.
-                    <p class=rqdesc>Postings will be organized into threads, which can be
-                    initiated by users.</p>
-                    <p class=rqdata>author:brown; date:Tue Jan 30 20:36:23 NST 2018;</p>
-                    <p class=rqvali>Client interview on Jan 30 2018 indicates a major limitation
-                         with D2L discussion is the topics can only be initiated by the instructor.</p>
-                    <p class=rqveri>Create a new thread.</p>
-                </li>
                 <li>User Authentication
                     <ol>
-                        <li data-moscow=m>Users can authenticate with Login/Password
-                            <p class=rqdesc>User logins and passwords have to be supported, and there
-                                may be special users who are guests or not formally registered for the
-                                course.</p>
-                            <p class=rqdata>author:brown; date:Tue Jan 30 20:36:23 NST 2018;</p>
-                            <p class=rqvali>Client interview on Jan 30 2018</p>
+                        <li>Users can authenticate with Login [MUST]
+                            <p class=rqdesc>User must have a login username and password, with which they can access the platform, through a login form.</p>
+                            <p class=rqvali>User Login Use Case</p>
                             <p class=rqveri>Log into the system.</p>
                         </li>
-                        <li data-moscow=s>Users can log in with their MUN credentials.
-                            <p class=rqdesc> In addition to SuD accounts, credentials from
-                                MUN should authenticate directly if already logged into a MUN session
-                                using the MUN system.  It is unknown at this time whether any API
-                                exposed by the MUN system allows this without clearance from MUN ITS</p>
-                            <p class=rqdata>author:brown; date:Tue Jan 30 20:36:23 NST 2018;</p>
-                            <p class=rqvali>Client interview on Jan 30 2018</p>
-                            <p class=rqveri>Log into the system using your MUN account credentials.</p>
-                        </li>
-                    </ol>
-                </li>
-                <li>Admin Operations
-                    <ol>
-                        <li data-moscow=s>Moderator priviledges are assignable.
-                            <p class=rqdesc> An administrator can assign moderator priviledges to
-                                accounts.</p>
-                            <p class=rqdata>author:brown; date:Thr Feb 1 15:12:20 NST 2018;</p>
-                            <p class=rqvali>This is a clear implication from the
-                                 <a href="brown/usecaseReviewPost.html"><em>Review Postings</em>
-                                use case.</a></p>
-                            <p class=rqveri>Log in as moderator, try the moderator operations.</p>
-                             <ol>
-                                <li data-moscow=s>Postings rejected by a moderator are not displayed.
-                                    <p class=rqdesc> Once a moderator rejects a posting, it is only
-                                        viewable by the poster or a user with moderator or similar
-                                         priviledges.</p>
-                                    <p class=rqdata>author:brown; date:Thr Feb 1 15:12:20 NST 2018;</p>
-                                    <p class=rqvali>For details of the proposed interaction sequence, see the
-                                         <a href="brown/usecaseReviewPost.html"><em>Review Postings</em>
-                                        use case.</a></p>
-                                    <p class=rqveri>Log in as moderator, try the moderator operations.</p>
-                                </li>
+                          <li>Users can register an account
+                            <ol>
+                              <li>Users can register an account [MUST]
+                                  <p class=rqdesc>User can fill in a form, containing username, email and password as fields, in order to become
+                                  a registered user.</p>
+                                  <p class=rqvali>Use Registration Use Case</p>
+                                  <p class=rqveri>Register an account into the system.</p>
+                              </li>
                             </ol>
-                        </li>
-                    </ol>
-                </li>
-                <li>Searching Facility
-                    <ol>
-                        <li data-moscow=s>Users can search for other users.
-                            <p class=rqdesc> A user can enter the user name or display name for another user,
-                            in order to look for their profile.</p>
-                            <p class=rqdata>author:mmatelsisy; date:Sun Feb 4 23:37:10 NST 2018;</p>
-                            <p class=rqvali>This requirement is derived from the
-                                 <a href="use_case.html"><em>Searching for Users and Topics</em>
-                                use case</a>, and its respective <a href="user_story.html">User Story</a></p>
-                            <p class=rqveri>As a logged in user, use a search bar to find the profile of another user.</p>
-                        </li>
-                        <li data-moscow=s>Users can search for specific topics.
-                            <p class=rqdesc> A user can enter keywords contained within a topic's title or body,
-                              and find a topic that matches the query, if it exists.</p>
-                            <p class=rqdata>author:mmatelsisy; date:Sun Feb 4 23:47:35 NST 2018;</p>
-                            <p class=rqvali>This requirement is derived from the
-                                 <a href="use_case.html"><em>Searching for Users and Topics</em>
-                                use case</a>, and its respective <a href="user_story.html">User Story</a></p>
-                            <p class=rqveri>As a logged in user, use a search bar to find a topic posted on the application.</p>
-                        </li>
-                        <li data-moscow=s>Search form validation.
-                            <p class=rqdesc> The application would refuse to run a search if no option is selected
-                             from the user/topic radio button group.</p>
-                            <p class=rqdata>author:mmatelsisy; date:Sun Feb 4 23:53:29 NST 2018;</p>
-                            <p class=rqvali>This requirement is derived from the
-                                 <a href="use_case.html"><em>Searching for Users and Topics</em>
-                                use case</a>
-                            <p class=rqveri>Attempt to execute a user/topic search with no option from the respective radio button group being selected.</p>
-                        </li>
+                          </li>
                     </ol>
                 </li>
             </ol>
         </li>
         <li> Usability
           <ol>
-            <li>Searching Facility
-                <ol>
-                    <li data-moscow=s>Highlighting form validation errors.
-                        <p class=rqdesc> The user will see a red border with rounded edges around the radio button group for
-                        user/topics searching, if they attempt to excute a search without selecting an option from the radio group.</p>
-                        <p class=rqdata>author:mmatelsisy; date:Mon Feb 5 00:00:10 NST 2018;</p>
-                        <p class=rqvali>This requirement is derived from the
-                             <a href="use_case.html"><em>Searching for Users and Topics</em>
-                            use case</a>
-                        <p class=rqveri>Attempt to execute a user/topic search with no option from the respective radio button group being selected.</p>
-                    </li>
-                  </ol>
-                </li>
           </ol>
         </li>
         <li> Reliability
@@ -194,15 +44,6 @@
         </li>
         <li> Design constraints
             <ol>
-                <li data-moscow=m>The Flask framemork is used.
-                    <p class=rqdesc> Use of the flask web development framework imposes design
-                    restrictions regarding how web services are stuructured and how mobile devices
-                     are supported. Much of the project architecture is pre-determined by the flask
-                     framework. </p>
-                    <p class=rqdata>author:brown; date:Tue Jan 30 20:36:23 NST 2018;</p>
-                    <p class=rqvali>Imposed by the COMP2005 context of the project</p>
-                    <p class=rqveri>Examine the implementation code.</p>
-                </li>
             </ol>
         </li>
         <li> Implementation requirements
@@ -211,14 +52,6 @@
         </li>
         <li> Physical requirements
             <ol>
-                <li data-moscow=w>Target deployment uses the MUN CS apache server.
-                    <p class=rqdesc> The apache server at MUN CS is open to students, but cannot be
-                    configured by students. Attention must be paid to this requirement throughout the
-                    project to ensure there are no server configuration needs. </p>
-                    <p class=rqdata>author:brown; date:Tue Jan 30 20:36:23 NST 2018;</p>
-                    <p class=rqvali>Imposed by the COMP2005 context of the project</p>
-                    <p class=rqveri>Check the server IP address.</p>
-                </li>
             </ol>
         </li>
     </ol>
