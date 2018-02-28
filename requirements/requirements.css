@@ -1,0 +1,50 @@
+
+/* outline numbering from the HTML5 tutorial https://www.w3schools.com/css/css_counters.asp */
+ol {
+    counter-reset: section;
+    list-style-type: none;
+}
+
+ol li::before {
+    counter-increment: section;
+    font-style: italic;
+    background: yellow;
+    margin-left: -20px;
+    content: counters(section,".") " ";
+}
+
+ol li {
+    font-weight: bold;
+}
+
+.rqdata {
+    font-weight: normal;
+    font-style: none;
+    background: lightgrey;
+    display: none;
+}
+
+.rqdesc {
+    font-weight: normal;
+    font-style: none;
+}
+
+.rqvali::before {
+    font-weight: normal;
+    font-style: italic;
+    content: "Validation: ";
+}
+.rqvali {
+    font-weight: normal;
+    font-style: italic;
+}
+
+.rqveri::before {
+    font-weight: normal;
+    font-style: italic;
+    content: "Verify by: ";
+}
+.rqveri {
+    font-weight: normal;
+    font-style: italic;
+}
