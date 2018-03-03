@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="generator" content="ReText 5.3.1">
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Login Authentication</strong><br>
+<strong>Primary Actor:</strong> User<br>
+<strong>Stakeholders and Interests:</strong>  </p>
+<blockquote>
+<p>User - wants to access the platform via a login form.</p>
+</blockquote>
+<p><strong>Precondition:</strong> User should have an already registered account.<br>
+<strong>Trigger:</strong> User click "login" button on login form.<br>
+<strong>Main success scenario:</strong>  </p>
+<blockquote>
+<ol>
+<li>User inputs a valid and distinct username and password.</li>
+<li>User click the "login" button.</li>
+<li>The users data is passed to the backend and then granted access to the platform.</li>
+<li>User has full access to main platform to continue other actions.</li>
+<li>User repeats 1 & 2 everytime they want to login.</li>
+</ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+<ol style="list-style-type: none;">
+<li>3a. User enters an unregistered unique/distinct username and password:
+<ol style="list-style-type: none;">
+<li>3a1. SuD does not recognize users information.</li>
+<li>3a2. SuD rejects users information.</li>
+<li>3a3. User is prompted to create/register a new account.</li>
+<li>3a4. User clicks the "not registered" button to register new account.<li>
+</li>3a5. "Not Registered" button initiates <em>Registration</em> use case.</li>
+</blockquote>
+</body>
+</html>
