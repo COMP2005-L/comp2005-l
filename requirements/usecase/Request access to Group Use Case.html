@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Request access to Group</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Request Access to Group</strong><br>
+    <strong>Primary Actor:</strong> User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>User - Requests access to group via group admin</p>
+    <p>Group Admin - Decides to grant access to invitation made by user</p>
+</blockquote>
+<p><strong>Precondition:</strong> User is signed in<br>
+    <strong>Trigger:</strong> User clicks on "Join Group" for a particular group they wish to join<br>
+    <strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>User searches for a group relating to a particular topic that the group focuses on</li>
+        <li>User requests access to group via "Join Group" button </li>
+        <li>User invitation data is passed to the Group Admin</li>
+		<li>Group admin clicks on "Add User"</li>
+        <li>User is notified that they have been added to the group</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            3a. User is already a member of the group
+            <ol style="list-style-type: none;">
+                <li>3a1. Notify user that they are already part of the group</li>
+            </ol>
+            <br/>
+            4a. User is rejected by Group Admin
+            <ol style="list-style-type: none;">
+            	<li>4a1. Group Admin clicks on "Deny User" and gives optional reason</li>
+                <li>5a1. Notify user that they have been denied access by Group Admin, with optional reason</li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/requestAccess.png"/>
+</body>
+</html>
