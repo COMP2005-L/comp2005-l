@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Direct Messaging</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Direct Messaging</strong><br>
+    <strong>Primary Actor:</strong> Typing User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>Typing User - wants to send a direct message to the recipient user</p>
+    <p>Recipient User - wants to receive any message sent to them from other users</p>
+</blockquote>
+<p><strong>Precondition:</strong> Typing User is logged into the platform.<br>
+    <strong>Trigger:</strong>
+<ul>
+    <li> User clicks the direct messaging button on the recipient's user profile, OR</li>
+    <li> User clicks on inbound direct messaging notification</li>
+</ul>
+<br>
+<strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>Typing user sees a window in the recipient user's profile showing the chat history, with a textbox under
+            it
+        </li>
+        <li>Typing user fills the textbox with their desired message</li>
+        <li>Typing user presses the `Enter` key or clicks the "Send" button</li>
+        <li>The direct message is sent to the backend, so that it can be dispatched through a web socket to the
+            recipient
+        </li>
+        <li>Recipient user sees the message if he has the chat open, or receives a notification otherwise</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            3a. Could not connect to backend or push direct message to websocket
+            <ol style="list-style-type: none;">
+                <li>3a1. Show a client-side notice to the typing user, indicating the message was not delivered
+                    successfully
+                </li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/registration.png"/>
+</body>
+</html>

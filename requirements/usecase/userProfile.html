@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - User Profile</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>User Profiles</strong><br>
+    <strong>Primary Actor:</strong> Previewing User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>Previewing User - wants to view the profile of another user
+    </p>
+</blockquote>
+<p><strong>Precondition:</strong> Previewing user is logged into the platform<br>
+    <strong>Trigger:</strong> Previewing user clicks on the target user's name or profile picture, available
+    on one of the target user's posts<br>
+    <strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>Previewing user requests to see the profile of the target user</li>
+        <li>Target user id is passed to the backend, and the user profile view is retrieved</li>
+        <li>The user profile shows the profile picture, username, email and registration date of the target user</li>
+        <li>Previewing user can click on a direct messaging button to chat with the user</li>
+        <li>Upon such a click, launch the direct messaging use case</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            3a. Target user does not have a profile picture
+            <ol style="list-style-type: none;">
+                <li>3a1. Display the default user profile picture instead</li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/userProfiles.png"/>
+</body>
+</html>
