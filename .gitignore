@@ -1,2 +1,5 @@
 .ignore
 .idea
+app.egg-info
+app.db
+config.py
