@@ -5,8 +5,7 @@ class login:
 
 	@staticmethod
 	def get():
-		form = LoginForm()
-		return render_template("login.html") form=form)		
+		return render_template("login.html")		
 	@staticmethod	
 	def post():
 		error = None
