@@ -10,3 +10,8 @@ def login():
 @app.route("/login", methods=["POST"])
 def redirect():
 	return Login.post()
+
+
+@app.route("/postview", methods=["GET"])
+def postview():
+    return None
