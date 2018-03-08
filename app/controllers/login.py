@@ -1,11 +1,11 @@
-from flask import render_template, flash, redirect url_for, request
+from flask import render_template, flash, redirect, url_for, request
 from app import app
 
-class login:
+class Login:
 
 	@staticmethod
 	def get():
-		return render_template("login.html")		
+		return render_template("login.html")
 	@staticmethod	
 	def post():
 		error = None
@@ -15,7 +15,7 @@ class login:
 			elif request.form [ "password" ] != app.config [ "PASSWORD" ]:
 				error = "Invalid Password!"
 			else:
-				session[ "aLogIn" ] = True
+				session[ "Login" ] = True
 				flash("You have successfully logged in!")
 				return redirect(url_for("Postview"))
 			return render_template("login.html", error=error)
