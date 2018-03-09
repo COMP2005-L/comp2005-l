@@ -10,8 +10,6 @@ class Login:
 	def post():
 		error = None
 		if request.method == "POST":
-			print(request.form['username'])
-			print(User.query.all())
 			user = User.query.filter_by(username=request.form['username']).first()
 			if (not user):
 				error = "Invalid Username!"
