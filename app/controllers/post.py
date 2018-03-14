@@ -1,9 +1,14 @@
 from flask import render_template, flash, redirect, url_for, request
-from app.models.Post import Post
+# from app.models.Post import Post
 from app import db
 
 
 class PostController:
+
+    @staticmethod
+    def showPostEditor(postId):
+        postUrlParam = ('/' + str(postId) if postId else '')
+        return render_template('post_Edit.html', postUrlParam=postUrlParam)
 
     @staticmethod
     def post(postId):

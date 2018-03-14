@@ -16,8 +16,8 @@ class Login:
 			elif user.password != request.form['password']:
 				error = "Invalid Password!"
 			else:
-				session[ "Login" ] = True
+                session["logged_in"] = True
 				flash("You have successfully logged in!")
-				return redirect(url_for('postview'))
+                return redirect(url_for('show_post_editor'))
 			return render_template("login.html", error=error)
 	

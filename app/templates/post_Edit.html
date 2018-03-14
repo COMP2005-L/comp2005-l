@@ -1,8 +1,8 @@
 {% extends "main.html" %}
 {% block body %}
   {% if session.logged_in %}
-    <form action= "{{ url_for('create_update_post') }}"
- method="post" class="add-entry">
+<form action="/postEdit{{postUrlParam}}"
+      method="post" class="add-entry">
       <dl>
         <dt>Add a Title!:
         </dt><dd><input type="text" size="30" name="title">
@@ -11,13 +11,6 @@
         </dd><dd><input type="submit" value="Share">
       </dd></dl>
     </form>
-  {% endif %} 
-  <ul class="entries">
-  {% for entry in entries %}
-    <li><h2>{{ entry.title }}</h2>{{ entry.text|safe }}
-  {% else %}
-    </li><li><em>Nuts! No entries!</em>
-  {% endfor %}
-  </li></ul>
+{% endif %}
 {% endblock %}
 

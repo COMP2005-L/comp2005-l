@@ -13,13 +13,15 @@ def redirect():
 	return Login.post()
 
 
-@app.route("/postview", methods=["GET"])
-def postview():
-    return None
+@app.route("/postEdit", methods=["GET"])
+@app.route("/postEdit/<int:postId>", methods=["GET"])
+def show_post_editor(postId=None):
+    return PostController.showPostEditor(postId)
 
 
-@app.route("/postEdit/<int:postId>", methods=["POST"], defaults={'postId': None})
-def create_update_post(postId):
+@app.route("/postEdit", methods=["POST"])
+@app.route("/postEdit/<int:postId>", methods=["POST"])
+def create_update_post(postId=None):
 	result = None
 	try:
 		result = PostController.post(postId)
