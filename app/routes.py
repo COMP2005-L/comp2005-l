@@ -12,6 +12,6 @@ def redirect():
 	return Login.post()
 
 
-@app.route("/postview", methods=["GET"])
-def postview():
-    return None
+@app.route("/Post", methods=["GET"])
+def Post():
+    return Post.post()
