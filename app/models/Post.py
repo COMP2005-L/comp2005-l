@@ -18,6 +18,6 @@ class Post(db.Model):
                 example = Post(title='e', body = 'i am a cat', postedby = 'jane')
     """
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=True, nullable=False)
+    title = db.Column(db.String(50), unique=False, nullable=False)
     body = db.Column(db.String(255), nullable=False)
-    postedby = db.Column(db.String(40), unique=True, nullable=False)
+    postedby = db.Column(db.String(40), unique=False, nullable=False)

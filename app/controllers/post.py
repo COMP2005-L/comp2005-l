@@ -1,5 +1,5 @@
-from flask import render_template, flash, redirect, url_for, request
-# from app.models.Post import Post
+from flask import render_template, session, redirect, url_for, request
+from app.models.Post import Post
 from app import db
 
 
@@ -20,20 +20,18 @@ class PostController:
         """
         title = request.form['title']
         body = request.form['body']
-        postedBy = request.form['postedBy']
 
         if (postId):
             selectedPost = Post.query.filter_by(id=postId).first()
 
             selectedPost.title = title
             selectedPost.body = body
-            selectedPost.postedBy = postedBy
 
             db.session.commit()
 
         else:
-            newPost = Post(title=title, body=body, postedBy=postedBy)
+            newPost = Post(title=title, body=body, postedby=session['logged_in'])
             db.session.add(newPost)
             db.session.commit()
 
-        return {success: True}
+        return redirect('/listView')
