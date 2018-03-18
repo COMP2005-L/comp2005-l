@@ -2,7 +2,8 @@
 {% block body %}
   {% for entry in entries %}
   {% if session.logged_in %}
-        <form action= "{{ url_for('Post') }}" method="get" class="add-entry">
+        <form action= "{{ url_for('post') }}" method="get" class="add-entry">
+
             <b>{{ Post.title }} </b>
             <b>{{ Post.id }} </b>
             <b>{{ Post.postedby }}</b> 
