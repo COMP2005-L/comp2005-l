@@ -29,3 +29,8 @@ def create_update_post(postId=None):
 @app.route("/post/<int:postId>", methods=["GET"])
 def show_post(postId):
     return PostController.showPost(postId)
+
+
+@app.route("/listview", methods=["GET"])
+def list():
+    return Post.listPosts()
