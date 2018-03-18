@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block body %}
+{% if session.logged_in %}
+{% for post in posts %}
+<a href="/post/{{post.id}}" style="
+            width: 70%;
+            margin-left: 10%;
+            border: 1px solid #ccc;
+            padding: 4px 5%;
+            display: block;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: Helvetica;
+            background-color: #fffff5;
+        ">{{ post.title }} </a>
+{% else %}
+<em>Nuts! No Posts!</em>
+{% endfor %}
+{% endif %}
+{% endblock %}
