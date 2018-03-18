@@ -11,6 +11,9 @@ class PostController:
     @staticmethod
     def listPosts():
 
-        if ():
+        if session.get("logged_in"):
             posts = Post.query.all().order_by(Post.title)
             return render_template("ListView.html", posts=posts)
+
+        else:
+            return redirect("/login")
