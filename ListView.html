@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% block body %}
+  {% for entry in entries %}
+  {% if session.logged_in %}
+        <form action= "{{ url_for('post') }}" method="get" class="add-entry">
+	{% for row in db.session.query() % }
+            <b>{{ Post.title }} </b>
+            <b>{{ Post.id }} </b>
+            <b>{{ Post.postedby }}</b> 
+            <p><textarea name=post rows=3 cols=60>{{ Post.body }}
+                    </textarea></p>
+	{% endfor %}
+    </form>
+  {% endif %}
+  {% else %}
+    </li><li><em>Nuts! No Posts!</em>
+  {% endfor %}
+  </li></ul>
+{% endblock %}
