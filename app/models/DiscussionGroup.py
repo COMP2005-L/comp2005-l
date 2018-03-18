@@ -4,6 +4,7 @@ from datetime import datetime
 
 
 class DiscussionGroup(db.Model):
+
     """
         The model mapping to the Discussion Group table
 
@@ -17,8 +18,11 @@ class DiscussionGroup(db.Model):
             -To instantiate, use keyword parameters
                 example = Post(title='e', body = 'i am a cat', poster_id = 1)
     """
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), unique=False, nullable=False)
-    body = db.Column(db.String(255), nullable=False)
-    dateposted = db.Column(db.String(100), db.ForeignKey("user.id"), nullable=False)
-    postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1, auto-retrieved
+    discussionid = db.Column(db.Integer, primary_key=True)
+    discussiontitle = db.Column(db.String(50), unique=False, nullable=False)
+    discussionbody = db.Column(db.String(255), nullable=False)
+    discussiondateposted = db.Column(db.String(100), nullable=False)
+    discussionposter_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    postedby = db.relationship('User', uselist=False, lazy=False)
+
+    
