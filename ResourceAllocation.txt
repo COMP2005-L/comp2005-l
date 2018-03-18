@@ -1,0 +1,11 @@
+Greg - Create Group Route Handler
+
+Sajid - Create Group Table
+
+Moustafa - Create Group View + Handler
+
+Gillian - Search for User
+
+Weiming - Leave Group view + Handler
+
+
