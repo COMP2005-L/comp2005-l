@@ -11,12 +11,6 @@ class PostController:
     @staticmethod
     def listPosts():
 
-    '''
-    Handles viewing of posts when logged in.
-    :param ID: The ID assiociated with the list of posts.
-    :return: result: dict
-    '''
-
         if session.get("logged_in"):
             posts = Post.query.all().order_by(Post.title)
             return render_template("ListView.html", posts=posts)
