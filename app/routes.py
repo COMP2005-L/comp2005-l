@@ -33,4 +33,4 @@ def show_post(postId):
 
 @app.route("/listview", methods=["GET"])
 def list():
-    return Post.listPosts()
+    return PostController.listPosts()

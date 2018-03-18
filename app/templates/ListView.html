@@ -1,18 +1,20 @@
 {% extends "main.html" %}
 {% block body %}
-  {% for entry in entries %}
   {% if session.logged_in %}
-        <form action= "{{ url_for('post') }}" method="get" class="add-entry">
-
-            <b>{{ Post.title }} </b>
-            <b>{{ Post.id }} </b>
-            <b>{{ Post.postedby }}</b> 
-            <p><textarea name=post rows=3 cols=60>{{ Post.body }}
-                    </textarea></p>
-    </form>
+{% for post in posts %}
+<a href="/post/{{post.id}}" style="
+            width: 70%;
+            margin-left: 10%;
+            border: 1px solid #ccc;
+            padding: 4px 5%;
+            display: block;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: Helvetica;
+            background-color: #fffff5;
+        ">{{ post.title }} </a>
+{% else %}
+<em>Nuts! No Posts!</em>
+{% endfor %}
   {% endif %}
-  {% else %}
-    </li><li><em>Nuts! No Posts!</em>
-  {% endfor %}
-  </li></ul>
 {% endblock %}

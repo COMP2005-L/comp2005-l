@@ -54,7 +54,7 @@ class PostController:
         """
 
         if session.get("logged_in"):
-            posts = Post.query.all().order_by(Post.title)
+            posts = Post.query.order_by(Post.title).all()
             return render_template("ListView.html", posts=posts)
 
         else:
