@@ -25,6 +25,7 @@ def show_post_editor(postId=None):
 def create_update_post(postId=None):
     return PostController.post(postId)
 
-@app.route("/Post", methods=["GET"])
-def Post():
-    return Post.post()
+
+@app.route("/post/<int:postId>", methods=["GET"])
+def show_post(postId):
+    return PostController.showPost(postId)

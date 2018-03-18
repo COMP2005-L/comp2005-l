@@ -1,5 +1,6 @@
 from flask import render_template, session, redirect, url_for, request
 from app.models.Post import Post
+from app.models.User import User
 from app import db
 
 
@@ -9,6 +10,11 @@ class PostController:
     def showPostEditor(postId):
         postUrlParam = ('/' + str(postId) if postId else '')
         return render_template('post_Edit.html', postUrlParam=postUrlParam)
+
+    @staticmethod
+    def showPost(postId):
+        post = Post.query.filter_by(id=postId).first()
+        return render_template('post_view.html', title=post.title, body=post.body, postedby=post.postedby)
 
     @staticmethod
     def post(postId):
@@ -30,7 +36,9 @@ class PostController:
             db.session.commit()
 
         else:
-            newPost = Post(title=title, body=body, postedby=session['logged_in'])
+            postedBy = User.query.filter_by(id=session['logged_in'])
+
+            newPost = Post(title=title, body=body, postedby=postedBy)
             db.session.add(newPost)
             db.session.commit()
 

@@ -15,9 +15,10 @@ class Post(db.Model):
 
         Examples:
             -To instantiate, use keyword parameters
-                example = Post(title='e', body = 'i am a cat', postedby = 'jane')
+                example = Post(title='e', body = 'i am a cat', poster_id = 1)
     """
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(50), unique=False, nullable=False)
     body = db.Column(db.String(255), nullable=False)
-    postedby = db.Column(db.String(40), unique=False, nullable=False)
+    poster_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1, auto-retrieved

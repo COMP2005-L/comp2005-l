@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block body %}
+{% if session.logged_in %}
+<div style="
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10vh;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 3px;
+">
+    <h1>{{title}}</h1>
+    <p>Posted by: {{postedby.username}}</p>
+    <p>{{body}}</p>
+</div>
+{% endif %}
+{% endblock %}
