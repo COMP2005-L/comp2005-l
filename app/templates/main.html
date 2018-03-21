@@ -3,7 +3,7 @@
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='main.css') }}">
 <div class=page>
-	{% if not session.logged_in %}
+	{% if session.logged_in %}
 		<div class=navbar>
 		
 			<button class=navlink id=home href="">Home</button>
