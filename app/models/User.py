@@ -23,3 +23,5 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+
+

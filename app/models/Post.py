@@ -22,3 +22,21 @@ class Post(db.Model):
     body = db.Column(db.String(255), nullable=False)
     poster_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1, auto-retrieved
+
+    def subscribe(self, post):
+        if not self.is_subscribing(post):
+            self.subcribed.append(post)
+
+    def unsubscribe(self, post):
+        if self.is_subscribing(post):
+            self.subscribed.remove(post)
+
+    def is_subscribing(self, post):
+        return self.subscribed.filter(
+            subscribers.c.subscribed_id == Post.id).count() > 0
+
+    def subscribed_posts(self):
+        return Post.query.join(
+            subscribers, (subscribers.c.subscribed_id_id == Post.id)).filter(
+            subscribers.c.subscribed_id == self.id).order_by(
+            Post.title())
