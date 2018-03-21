@@ -1,9 +1,10 @@
 from flask import render_template, session, redirect, request
-# from app.models.Group import Group
 from app.models.User import User
 from app.services.JsonService import JsonService
 from app import db
 import json
+from app.models.DiscussionGroup import DiscussionGroup
+from app import db
 
 
 class GroupController:
@@ -19,7 +20,7 @@ class GroupController:
         groupName = request.form['groupName']
         groupMembers = request.form.getlist('groupMembers')
 
-        newGroup = Group(groupName=groupName, groupMembers=groupMembers)
+        newGroup = DiscussionGroup(groupName=groupName, groupMembers=groupMembers)
         db.session.add(newGroup)
         db.session.commit()
 
