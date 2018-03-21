@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, jsonify
 from app import app
 from app.controllers.login import Login
 from app.controllers.post import PostController
+from app.controllers.group import GroupController
 
 
 @app.route("/login", methods=["GET"])
@@ -34,3 +35,13 @@ def show_post(postId):
 @app.route("/listview", methods=["GET"])
 def list():
     return PostController.listPosts()
+
+
+@app.route("/groups/create", methods=["POST"])
+def createGroup():
+    return GroupController.createGroup()
+
+
+@app.route("/groups/create", methods=["GET"])
+def showCreateGroup():
+    return GroupController.showCreateGroup()

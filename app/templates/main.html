@@ -17,7 +17,7 @@
   		 this is hidden so it isn't displayed, but used for reference.
    		 <a href="{{ url_for('login') }}">log in</a>
  		 {% else %}
-   		 <a href="{{ url_for('logout') }}">log out</a>
+		<a href="/">log out</a>
   		 {% endif %}</div>
  	</div>
   {% for message in get_flashed_messages() %}
