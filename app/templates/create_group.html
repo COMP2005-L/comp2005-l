@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% block body %}
+<form style="
+        margin: 0 auto;
+        width: 50%;
+        font-family: Helvetica;
+    " action="{{ url_for('createGroup') }}" method=post>
+    <dl>
+        <h1>Group Name:
+            <input type=text name=groupName style="
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                display: block;
+            ">
+            <h1>Search for Users:
+                <input id="users-search" type=text style="
+                padding: 5px;
+                font-size: 16px;
+                border-radius: 3px;
+                border: 1px solid #ccc;
+                display: block;
+            ">
+                <fieldset id="users" style="
+                margin: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+                padding: 10px;
+                margin-left: 0;
+                font-size: 16px;
+                font-weight: normal;
+        ">
+                </fieldset>
+                <dd><input type=submit value=Create>
+    </dl>
+</form>
+<script type="text/javascript">
+    window.onload = function(){
+        window.users = {{users | safe}}
+    }
+
+</script>
+<script type="text/javascript" src="/static/js/createGroup.js"></script>
+{% endblock %}
