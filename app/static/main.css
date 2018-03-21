@@ -1,0 +1,14 @@
+.navbar {
+	block:inline;
+	width:100%;
+	height:30px;
+	border: solid gray;
+}
+
+#logout, #newpost {
+	align:right;
+}
+
+.navlink {
+	color:rgb(150,0,0);
+}
