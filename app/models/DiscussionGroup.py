@@ -17,12 +17,10 @@ class DiscussionGroup(db.Model):
         Attributes:
             discussionid: int - The primary key ID of the Author
             discussiontitle: string - The unique title of what the new post is about
-            discussionbody: string - The main information/data of the post.
-            postedby: string - The name of the original author of the post.
-
+            discussiondateposted: string - The date in which the discussion group was created
         Examples:
             -To instantiate, use keyword parameters
-                example = Post(title='e', body = 'i am a cat', poster_id = 1)
+                example = DiscussionGroup(discussiontitle = "Awesome Group!",  discussiontitle = "', poster_id = 1)
     """
 
 
@@ -30,10 +28,7 @@ class DiscussionGroup(db.Model):
     __tablename__ = "discussion"
     discussionid = db.Column(db.Integer, primary_key=True)
     discussiontitle = db.Column(db.String(50), unique=False, nullable=False)
-    discussionbody = db.Column(db.String(255), nullable=False)
     discussiondateposted = db.Column(db.String(100), nullable=False)
-    discussionposter_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    postedby = db.relationship('User', uselist=False, lazy=False)
 
 
     groupMembership = db.relationship("User", secondary = discussion_user)
