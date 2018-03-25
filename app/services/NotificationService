@@ -1,0 +1,10 @@
+from app.services.JsonService import JsonService
+from flask_socketio import emit
+import json
+
+
+class NotificationService:
+    def dispatch(self, notification):
+        preppedNotification = JsonService.prepareModel(notification)
+        data = json.dumps(preppedNotification)
+        emit("NOTIFICATION-ADDED", data)
