@@ -1,4 +1,5 @@
 from app import db
+from app.models.DiscussionGroup import discussion_user
 
 from datetime import datetime
 
@@ -24,3 +25,4 @@ class User(db.Model):
     email = db.Column(db.String(255), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     createdAt = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    groups = db.relationship("DiscussionGroup", secondary=discussion_user, back_populates="groupMemberships")
