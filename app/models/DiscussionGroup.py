@@ -28,7 +28,7 @@ class DiscussionGroup(db.Model):
     __tablename__ = "discussion"
     discussionid = db.Column(db.Integer, primary_key=True)
     discussiontitle = db.Column(db.String(50), unique=False, nullable=False)
-    discussiondateposted = db.Column(db.DateTime, onupdate=datetime.datetime.now)
+    discussiondateposted = db.Column(db.DateTime, onupdate=datetime.now)
 
 
     groupMembership = db.relationship("User", secondary = discussion_user)
