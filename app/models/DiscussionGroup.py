@@ -1,6 +1,12 @@
 from app import db
+from app.models.User import User
 
 from datetime import datetime
+
+discussion_user = db.Table("discussion_user", db.Model.metadata, \
+                             db.Column("discussion_id", db.Integer, db.ForeignKey("discussion.discussionid")), \
+                             db.Column("user_id", db.Integer, db.ForeignKey("user.id")))
+
 
 
 class DiscussionGroup(db.Model):
@@ -18,6 +24,10 @@ class DiscussionGroup(db.Model):
             -To instantiate, use keyword parameters
                 example = Post(title='e', body = 'i am a cat', poster_id = 1)
     """
+
+
+
+    __tablename__ = "discussion"
     discussionid = db.Column(db.Integer, primary_key=True)
     discussiontitle = db.Column(db.String(50), unique=False, nullable=False)
     discussionbody = db.Column(db.String(255), nullable=False)
@@ -25,4 +35,6 @@ class DiscussionGroup(db.Model):
     discussionposter_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     postedby = db.relationship('User', uselist=False, lazy=False)
 
+
+    groupMembership = db.relationship("User", secondary = discussion_user)
 
