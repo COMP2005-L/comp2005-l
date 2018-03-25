@@ -1,0 +1,21 @@
+
+{% extends "main.html" %}
+{% block body %}
+{% if session.logged_in %}
+{% for user in users %}
+<a href="/user/{{user.id}}" style="
+            width: 20%;
+            margin-left: 10%;
+            border: 1px solid #ccc;
+            padding: 4px 5%;
+            display: block;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: Helvetica;
+            background-color: #fffff5;
+        ">{{ user.id }} </a>
+{% else %}
+<em>Nuts! No Members!</em>
+{% endfor %}
+  {% endif %}
+{% endblock %}
