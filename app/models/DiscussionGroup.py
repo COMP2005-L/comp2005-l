@@ -20,7 +20,7 @@ class DiscussionGroup(db.Model):
             discussiondateposted: string - The date in which the discussion group was created
         Examples:
             -To instantiate, use keyword parameters
-                example = DiscussionGroup(discussiontitle = "Awesome Group!",  discussiontitle = "', poster_id = 1)
+                example = DiscussionGroup(discussiontitle = "Awesome Group!",  discussiondateposted = <<today's date>>)
     """
 
 
