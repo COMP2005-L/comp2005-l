@@ -1,6 +1,9 @@
 from flask import render_template, session, redirect, url_for, request
 from app.models.Post import Post
 from app.models.User import User
+from app.models.Notification import Notification
+from app.models.DiscussionGroup import DiscussionGroup
+from app.services.NotificationService import NotificationService
 from app import db
 
 
@@ -8,8 +11,14 @@ class PostController:
 
     @staticmethod
     def showPostEditor(postId):
-        postUrlParam = ('/' + str(postId) if postId else '')
-        return render_template('post_Edit.html', postUrlParam=postUrlParam)
+        if (session["logged_in"]):
+            user = User.query.filter_by(id=session["logged_in"]).first()
+            postUrlParam = ('/' + str(postId) if postId else '')
+            groups = user.groups
+
+            return render_template('post_Edit.html', postUrlParam=postUrlParam, groups=groups)
+        else:
+            return redirect('/login')
 
     @staticmethod
     def showPost(postId):
@@ -27,6 +36,7 @@ class PostController:
         """
         title = request.form['title']
         body = request.form['body']
+        groupId = int(request.form.get("group"))
 
         if (postId):
             selectedPost = Post.query.filter_by(id=postId).first()
@@ -37,13 +47,24 @@ class PostController:
             db.session.commit()
 
         else:
-            postedBy = User.query.filter_by(id=session['logged_in'])
-
+            postedBy = User.query.filter_by(id=session['logged_in']).first()
+            group = DiscussionGroup.query.filter_by(discussionid=groupId).first()
             newPost = Post(title=title, body=body, postedby=postedBy)
             db.session.add(newPost)
+
+            if (groupId != -1):
+                for user in group.groupMemberships:
+                    notification = Notification(title='New post',
+                                                body='{} by {}'.format(title, postedBy.username),
+                                                read=False,
+                                                ref='/post/{}'.format(newPost.id),
+                                                recipient=user.id)
+                    db.session.add(notification)
+                    NotificationService.dispatch(notification)
+
             db.session.commit()
 
-        return redirect('/listView')
+        return redirect('/listview')
 
     @staticmethod
     def listPosts():
