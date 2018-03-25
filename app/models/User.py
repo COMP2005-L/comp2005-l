@@ -18,6 +18,7 @@ class User(db.Model):
             -To instantiate, use keyword parameters
                 example = User(username='e', email'me@me.com', password = 'test')
     """
+    __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), unique=True, nullable=False)
     email = db.Column(db.String(255), unique=True, nullable=False)
