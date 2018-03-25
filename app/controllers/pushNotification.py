@@ -25,6 +25,12 @@ class push_notification:
     def handle_user_notification(user, read, title, messsage, reference):
         """
         Push user notification to user socket connection.
+        :param user: User object to send the notification to
+        :param action: Action being performed
+        :param title: The message title
+        :param message: The body of message
+        :param reference: Link relevent to the notification; Link to a post for example
+        :param notification: a created notification
         """
         title = request.form('title')
         message = request.form('body')
@@ -36,13 +42,5 @@ class push_notification:
 
         if not read:
             socket.broadcast.to('user').emit('response', {'meta': message, 'title': title, 'reference': reference }, callback=ack)
-    
-    @staticmethod
-    def delete_notification(title):
-        """
-        Delete a notification form database
-        """
-        conn = sqlite3.connect(Notification)
-        current = conn.cursor()
-        current.execute(sql, (title))
+        db.session.delete(notification)
 
