@@ -5,7 +5,8 @@ from app.models.Notification import Notification
 from app import db
 
 class push_notification:
-
+    
+    @staticmethod
     def create_user_notification(user, action, title, message, reference):
         """
         Create a User Notification
@@ -35,7 +36,8 @@ class push_notification:
 
         if not read:
             socket.broadcast.to('user').emit('response', {'meta': message, 'title': title, 'reference': reference }, callback=ack)
-
+    
+    @staticmethod
     def delete_notification(title):
         """
         Delete a notification form database
