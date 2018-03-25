@@ -1,0 +1,7 @@
+{% extends 'layouts/login.html' %}
+{% set page_title = 'Search' %}
+{% block body %}
+    <div>
+        {{ render_form(url_for('search'), form) }}
+    </div>
+{% endblock %}
