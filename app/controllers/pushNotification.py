@@ -40,13 +40,7 @@ class push_notification:
         """
         Delete a notification form database
         """
-
-        try:
-            conn = sqlite3.connect(db_file)
-            return conn
-        except Error as e:
-            print(e)
-
-        current = conn.cursor();
-        cur.execute(sql, (title))
+        conn = sqlite3.connect(Notification)
+        current = conn.cursor()
+        current.execute(sql, (title))
 
