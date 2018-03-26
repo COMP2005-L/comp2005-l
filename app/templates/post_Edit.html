@@ -12,6 +12,15 @@
         </dt>
         <dd><textarea name="body" rows="5" cols="40"></textarea>
         </dd>
+        <dt>Discussion Group:</dt>
+        <dd>
+            <select name="group">
+                <option value="-1">None</option>
+                {% for group in groups %}
+                <option value="{{group.discussionid}}">{{group.discussiontitle}}</option>
+                {% endfor %}
+            </select>
+        </dd>
         <dd><input type="submit" value="Share">
         </dd>
     </dl>

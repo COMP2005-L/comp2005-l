@@ -1,5 +1,4 @@
 from app import db
-from app.models.User import User
 
 from datetime import datetime
 
@@ -30,6 +29,4 @@ class DiscussionGroup(db.Model):
     discussiontitle = db.Column(db.String(50), unique=False, nullable=False)
     discussiondateposted = db.Column(db.DateTime, default=datetime.utcnow(), nullable=False)
 
-
-    groupMembership = db.relationship("User", secondary = discussion_user)
-
+    groupMemberships = db.relationship("User", secondary=discussion_user, back_populates="groups")

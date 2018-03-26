@@ -18,13 +18,15 @@ class GroupController:
         """
 
         groupName = request.form['groupName']
-        groupMembers = request.form.getlist('groupMembers')
+        groupMembers = User.query.filter(User.id.in_(request.form.getlist('groupMembers'))).all()
 
-        newGroup = DiscussionGroup(groupName=groupName, groupMembers=groupMembers)
+        newGroup = DiscussionGroup(discussiontitle=groupName)
+        newGroup.groupMemberships = groupMembers
+
         db.session.add(newGroup)
         db.session.commit()
 
-        return redirect('/listView')
+        return redirect('/listview')
 
     @staticmethod
     def showCreateGroup():
