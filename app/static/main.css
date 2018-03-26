@@ -8,7 +8,7 @@ body{
     padding: 20px 5%;
     background-color: #fdbf09;
     box-shadow: 1px 1px 10px 2px #d2b30a;
-    width: 100%;
+    width: 95%;
     margin-bottom: 20px;
     margin-left: -16px;
 }
@@ -29,4 +29,35 @@ body{
 
 .navlink:hover{
     background: rgba(255,255,255,0.5);
+}
+
+#notification-area{
+    display: inline-block;
+    vertical-align: middle;
+    float: right;
+    margin-right: 1%;
+    position: relative;
+}
+
+#notification-count{
+    color: #fff;
+}
+
+#notifications{
+    position: absolute;
+    width: 200px;
+    right: 35px;
+    border: 1px solid #efefef;
+    background: #fff;
+    border-radius: 3px;
+    display: none;
+}
+
+#notifications div{
+    margin-left: 4px;
+}
+
+#notifications a {
+    color: #222;
+    text-decoration: none;
 }
