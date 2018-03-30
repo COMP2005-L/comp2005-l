@@ -5,14 +5,14 @@
 <form action="{{ url_for('register') }}" method=post>
     </dl>
     <dt>Email:
-    <dd><input type=text name=username>
+    <dd><input type=text name=email>
     <dt>Username:
     <dd><input type=text name=username>
     <dt>Enter Password:
-    <dd><input type=password name=password>
+    <dd><input type=password name=password1>
     <dt>Re-Enter Password:
-    <dd><input type=password name=password>
-    <dd><input type=submit value=Login>
+    <dd><input type=password name=password2>
+    <dd><input type=submit value=Login></dd>
         </dl>
 </form>
 {% endblock %}
