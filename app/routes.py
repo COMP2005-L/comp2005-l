@@ -3,7 +3,7 @@ from app import app
 from app.controllers.login import Login
 from app.controllers.post import PostController
 from app.controllers.group import GroupController
-
+from app.controllers.register import RegisterController
 
 @app.route("/login", methods=["GET"])
 def login():
@@ -14,6 +14,14 @@ def login():
 def redirect():
     return Login.post()
 
+@app.route("/register", methods=["GET"])
+def register():
+    return Register.get()
+
+
+@app.route("/register", methods=["POST"])
+def register():
+    return Register.post()
 
 @app.route("/postEdit", methods=["GET"])
 @app.route("/postEdit/<int:postId>", methods=["GET"])
