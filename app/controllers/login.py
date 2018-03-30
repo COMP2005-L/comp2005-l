@@ -6,11 +6,18 @@ class Login:
 
     @staticmethod
     def get():
+        """
+        Handles returning the view for login page
+        :return: jinjaTemplate
+        """
         return render_template("login.html")
 
     @staticmethod
     def post():
-        # type: () -> object
+        """
+        Handles returning the view for logging in, and redirecting to post editor if successful
+        :return: jinjaTemplate
+        """
         error = None
         if request.method == "POST":
             user = User.query.filter_by(username=request.form['username']).first()

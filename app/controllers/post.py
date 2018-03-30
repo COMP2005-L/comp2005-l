@@ -11,6 +11,11 @@ class PostController:
 
     @staticmethod
     def showPostEditor(postId):
+        """
+        Handles returning the view for post editor
+        :param postId: The postId to edit
+        :return: jinjaTemplate
+        """
         if (session["logged_in"]):
             user = User.query.filter_by(id=session["logged_in"]).first()
             postUrlParam = ('/' + str(postId) if postId else '')
@@ -22,6 +27,11 @@ class PostController:
 
     @staticmethod
     def showPost(postId):
+        """
+        Handles returning the view for posts
+        :param postId: The postId to show
+        :return: jinjaTemplate
+        """
         post = Post.query.filter_by(id=postId).first()
         return render_template('post_view.html', title=post.title, body=post.body, postedby=post.postedby)
 
@@ -30,7 +40,6 @@ class PostController:
         # type: (object) -> object
         """
         Handles creating new posts and updating new ones with the date passed in the POST request
-
         :param postId: The postId to update. If None, a new post will be created
         :return: result: dict
         """
@@ -68,13 +77,10 @@ class PostController:
 
     @staticmethod
     def listPosts():
-
         """
         Handles viewing of posts when logged in.
-        :param ID: The ID assiociated with the list of posts.
         :return: result: dict
         """
-
         if session.get("logged_in"):
             posts = Post.query.order_by(Post.title).all()
             return render_template("ListView.html", posts=posts)
