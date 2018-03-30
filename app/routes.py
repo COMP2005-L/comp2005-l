@@ -5,6 +5,7 @@ from app.controllers.logout import Logout
 from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
+from app.controllers.userprofile import UserProfile
 
 @app.route("/")
 @app.route("/login", methods=["GET"])
@@ -78,3 +79,14 @@ def subscribe(postId):
 @app.route("/subscriptions/remove/<int:postId>", methods=["POST"])
 def unsubscribe(postId):
     return PostController.unsubscribe(postId)
+
+
+
+
+@app.route("/userProfile", methods=["GET"])
+def showUserProfile():
+    return UserProfile.get()
+
+@app.route("/userProfile", methods=["POST"])
+def create_direct_messaging_userprofile():
+    return

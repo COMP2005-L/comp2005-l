@@ -1,0 +1,15 @@
+{% extends "main.html" %}
+
+{% block content %}
+  <table>
+      <tr valign="top">
+          <td><h1>User: {{ user.username }}</h1></td>
+      </tr>
+  </table>
+  <hr>
+  {% for post in posts %}
+  <p>
+    {{ post.postedby }} says: <b>{{ post.body }}</b>
+  </p>
+  {% endfor %}
+{% endblock %}
