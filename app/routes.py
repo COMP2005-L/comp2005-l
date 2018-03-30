@@ -15,13 +15,13 @@ def redirect():
     return Login.post()
 
 @app.route("/register", methods=["GET"])
-def register():
-    return Register.get()
+def showRegister():
+    return RegisterController.get()
 
 
 @app.route("/register", methods=["POST"])
 def register():
-    return Register.post()
+    return RegisterController.post()
 
 @app.route("/postEdit", methods=["GET"])
 @app.route("/postEdit/<int:postId>", methods=["GET"])

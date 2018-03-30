@@ -3,7 +3,7 @@ from app.models.User import User
 from app import db
 
 
-class Register:
+class RegisterController:
 
     @staticmethod
     def get():
