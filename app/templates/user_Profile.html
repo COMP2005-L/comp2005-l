@@ -1,15 +1,22 @@
+
 {% extends "main.html" %}
 
-{% block content %}
+{% block body %}
+{% if session.logged_in %}
   <table>
       <tr valign="top">
           <td><h1>User: {{ user.username }}</h1></td>
       </tr>
   </table>
   <hr>
+    <dd><textarea name="body" rows="5" cols="40"></textarea>
+    </dd>
   {% for post in posts %}
-  <p>
-    {{ post.postedby }} says: <b>{{ post.body }}</b>
-  </p>
+  <table>
+      <tr valign="top">
+          <td><i>{{ post.postedby}} says:</i><br>{{ post.body }}</td>
+      </tr>
+  </table>
   {% endfor %}
+{% endif %}
 {% endblock %}

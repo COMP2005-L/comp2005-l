@@ -34,3 +34,4 @@ class Login:
                 return redirect(url_for('list'))
 
         return render_template("login.html", error=error)
+
