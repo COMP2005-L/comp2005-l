@@ -84,9 +84,9 @@ def unsubscribe(postId):
 
 
 @app.route("/userProfile", methods=["GET"])
-def showUserProfile():
-    return UserProfile.get()
+def showUserProfile(userId=None):
+    return UserProfile.showUserProfile(userId)
 
 @app.route("/userProfile", methods=["POST"])
-def create_direct_messaging_userprofile():
-    return
+def create_direct_messaging_userprofile(userId):
+    return UserProfile.directMessaging(userId)

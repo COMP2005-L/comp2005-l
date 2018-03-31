@@ -7,22 +7,43 @@ from app import db
 
 class UserProfile:
 
+
+
+
     @staticmethod
     def showUserProfile():
-        return render_template("user_Profile.html")
+        """
+            Handles returning the user to their profile page where they
+            can view posts and direct message
+            :return: jinjaTemplate
+
+        """
+        
+        if (session.get("logged_in")):
+            user = User.query.filter_by(id=session["logged_in"]).first()
+            post = Post.query.filter_by(id=session["logged_in"]).first()
+            posts = Post.query.order_by(Post.title).all()
+            return render_template("user_Profile.html",body = post.body, postedby = post.postedby,posts = posts)
+
 
     @staticmethod
-    def directMessaging():
-        error = None
-        if request.method == "POST":
-            user = User.query.filter_by(username=request.form['username']).first()
-            if (not user):
-                error = "Invalid Username!"
-            elif user.password != request.form['password']:
-                error = "Invalid Password!"
-            else:
-                session["logged_in"] = user.id
-                flash("You have successfully logged in!")
-                return redirect(url_for('show_post_editor'))
+    def directMessaging(userId):
+        """
+            Handles returning the user to their profile page where they
+            can view posts and direct message
+            :param userId: User to send direct message to
+            :return: jinjaTemplate
 
-        return render_template("login.html", error=error)
+        """
+
+        title = request.form["title"]
+        body = request.form["body"]
+        postedBy = request.form["postedBy"]
+
+
+        postedBy = User.query.filter_by(id=session["logged_in"]).first()
+        newPost = Post(title = title, body = body, postedBy = postedBy)
+        db.session.add(newPost)
+        db.session.commit()
+
+        return redirect("/userProfile")
