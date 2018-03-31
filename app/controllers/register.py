@@ -15,7 +15,6 @@ class RegisterController:
 
     @staticmethod
     def post():
-        # type: () -> object
         error = None
         if request.method == "POST":
             email = request.form.get("email")
