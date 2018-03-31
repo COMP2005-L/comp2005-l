@@ -11,19 +11,18 @@ class UserProfile:
 
 
     @staticmethod
-    def showUserProfile():
+    def showUserProfile(username, postId):
         """
-            Handles returning the user to their profile page where they
+            Handles the get method for the user to their profile page where they
             can view posts and direct message
             :return: jinjaTemplate
 
         """
         
         if (session.get("logged_in")):
-            user = User.query.filter_by(id=session["logged_in"]).first()
-            post = Post.query.filter_by(id=session["logged_in"]).first()
-            posts = Post.query.order_by(Post.title).all()
-            return render_template("user_Profile.html",body = post.body, postedby = post.postedby,posts = posts)
+            user = User.query.filter_by(username = username).first()
+            post = Post.query.filter_by(id = postId).first()
+            return render_template("user_Profile.html",user = user, post = post)
 
 
     @staticmethod

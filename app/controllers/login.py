@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, session
 from app.models.User import User
 
-
 class Login:
 
     @staticmethod
