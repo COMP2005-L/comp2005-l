@@ -1,27 +1,26 @@
 
 {% extends "main.html" %}
 
-{% block content %}
+{% block body %}
 {% if session.logged_in %}
 
   <table>
       <tr valign="topofPage">
           <td><h1>User: {{ user.username }}</h1></td>
       </tr>
+      <tr>
+          <td><h4>{{user.email}}</h4></td>
+      </tr>
+      <tr>
+          <td><h4>Registered on: {{user.createdAt}}</h4></td>
+      </tr>
   </table>
-    <h2>Send a direct Message!</h2>
+
+<h2>Send a direct Message!</h2>
     <dd><textarea name="body" rows="5" cols="40"></textarea>
     </dd>
     <dd><input type="submit" value="send">
     </dd>
     <hr>
-    {% for post in posts %}
-    <table>
-        <tr valign="bottemofPage">
-            <td>{{ post.postedby }} says: <br>{{ post.body }}</td>
-        </tr>
-    </table>
-
-    {% endfor %}
 {% endif %}
 {% endblock %}
