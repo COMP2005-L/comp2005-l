@@ -5,6 +5,7 @@ from app.controllers.logout import Logout
 from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
+from app.controllers.userprofile import UserProfile
 
 @app.route("/")
 @app.route("/login", methods=["GET"])
@@ -20,7 +21,7 @@ def redirect():
 
 @app.route("/logout", methods=["GET"])
 def logout():
-	return Logout.post()
+    return Logout.post()
 
 
 @app.route("/register", methods=["GET"])
@@ -78,3 +79,12 @@ def subscribe(postId):
 @app.route("/subscriptions/remove/<int:postId>", methods=["POST"])
 def unsubscribe(postId):
     return PostController.unsubscribe(postId)
+
+
+@app.route("/userProfile/<string:username>", methods=["GET"])
+def showUserProfile(username):
+    return UserProfile.showUserProfile(username)
+
+@app.route("/userProfile", methods=["POST"])
+def create_direct_messaging_userprofile(userId):
+    return UserProfile.directMessaging(userId)
