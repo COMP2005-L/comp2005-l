@@ -21,7 +21,7 @@ def redirect():
 
 @app.route("/logout", methods=["GET"])
 def logout():
-	return Logout.post()
+    return Logout.post()
 
 
 @app.route("/register", methods=["GET"])
@@ -81,11 +81,9 @@ def unsubscribe(postId):
     return PostController.unsubscribe(postId)
 
 
-
-
-@app.route("/userProfile", methods=["GET"])
-def showUserProfile(username, postId):
-    return UserProfile.showUserProfile(username, postId)
+@app.route("/userProfile/<string:username>", methods=["GET"])
+def showUserProfile(username):
+    return UserProfile.showUserProfile(username)
 
 @app.route("/userProfile", methods=["POST"])
 def create_direct_messaging_userprofile(userId):
