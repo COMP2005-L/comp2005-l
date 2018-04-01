@@ -9,6 +9,6 @@ class Logout:
         Handles returning the view for logging out, and redirecting to login page
         :return: jinjaTemplate
         """
-        session["logged_in"] = -1
+        session["logged_in"] = None
         flash("You have successfully logged out!")
         return redirect(url_for('login'))
