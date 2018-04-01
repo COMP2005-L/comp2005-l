@@ -21,4 +21,4 @@ class Post(db.Model):
     title = db.Column(db.String(50), unique=False, nullable=False)
     body = db.Column(db.String(255), nullable=False)
     poster_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
-    postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1, auto-retrieved
+    postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1,auto-retrieved
