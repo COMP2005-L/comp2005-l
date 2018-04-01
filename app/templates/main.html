@@ -15,10 +15,10 @@
 	{% if session.logged_in %}
 		<div class=navbar>
 		
-			<button class=navlink id=home href="/listview">Home</button>
-			<button class=navlink id=profile href="">Profile</button>
-			<button class=navlink id=newpost href="/postEdit">+New Post</button>
-			<button class=navlink id=logout href="">Logout</button>
+			<button class=navlink id=home><a href="/listview">Home</a></button>
+			<button class=navlink id=profile><a href="">Profile</a></button>
+			<button class=navlink id=newpost><a href="/postEdit">+New Post</a></button>
+			<button class=navlink id=logout><a href="/logout">Logout</a></button>
 			<div id="notification-area">
 				<button class="navlink fa fa-bell"></button>
 				<span id="notification-count"></span>
