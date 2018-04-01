@@ -1,6 +1,6 @@
 .ignore
 .idea
 app.egg-info
-*.db
+app.db
 *.pyc
 .DS_Store
