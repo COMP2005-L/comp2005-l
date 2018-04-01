@@ -58,3 +58,13 @@ def showCreateGroup():
 @app.route("/comments/create/<int:postId>", methods=["POST"])
 def createComment(postId):
     return PostController.addComment(postId)
+
+
+@app.route("/subscriptions/add/<int:postId>", methods=["POST"])
+def subscribe(postId):
+    return PostController.subscribe(postId)
+
+
+@app.route("/subscriptions/remove/<int:postId>", methods=["POST"])
+def unsubscribe(postId):
+    return PostController.unsubscribe(postId)
