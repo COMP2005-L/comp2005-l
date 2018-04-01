@@ -5,6 +5,7 @@ from app.models.Comment import Comment
 from app.models.Notification import Notification
 from app.models.DiscussionGroup import DiscussionGroup
 from app.services.NotificationService import NotificationService
+from app.services.SubscriptionService import SubscriptionService
 from app import db
 
 
@@ -35,12 +36,14 @@ class PostController:
         """
         post = Post.query.filter_by(id=postId).first()
         comments = Comment.query.filter_by(post_id=postId).all()
+        isSubscribed = SubscriptionService.isSubscribed(postId, session["logged_in"])
         return render_template('post_view.html',
                                postId=postId,
                                title=post.title,
                                body=post.body,
                                postedby=post.postedby,
-                               comments=comments
+                               comments=comments,
+                               isSubscribed=isSubscribed
                                )
 
     @staticmethod
@@ -65,19 +68,8 @@ class PostController:
 
         else:
             postedBy = User.query.filter_by(id=session['logged_in']).first()
-            group = DiscussionGroup.query.filter_by(discussionid=groupId).first()
             newPost = Post(title=title, body=body, postedby=postedBy)
             db.session.add(newPost)
-
-            if (groupId != -1):
-                for user in group.groupMemberships:
-                    notification = Notification(title='New post',
-                                                body='{} by {}'.format(title, postedBy.username),
-                                                read=False,
-                                                ref='/post/{}'.format(newPost.id),
-                                                recipient=user.id)
-                    db.session.add(notification)
-                    NotificationService.dispatch(notification)
 
             db.session.commit()
 
@@ -103,6 +95,30 @@ class PostController:
 
         newComment = Comment(body=body, poster_id=userId, post_id=postId)
         db.session.add(newComment)
+
+        poster = User.query.filter_by(id=session["logged_in"]).first()
+        subscriptions = SubscriptionService.getSubscriptions(postId)
+        for subscription in subscriptions:
+            recipient = User.query.filter_by(id=subscription.subscriber).first()
+
+            notification = Notification(title='New Comment',
+                                        body='Comment by {}'.format(poster.username),
+                                        read=False,
+                                        ref='/post/{}'.format(postId),
+                                        recipient=recipient.id)
+            db.session.add(notification)
+            NotificationService.dispatch(notification)
+
         db.session.commit()
 
+        return redirect("/post/{}".format(postId))
+
+    @staticmethod
+    def subscribe(postId):
+        SubscriptionService.subscribe(postId, session["logged_in"])
+        return redirect("/post/{}".format(postId))
+
+    @staticmethod
+    def unsubscribe(postId):
+        SubscriptionService.unsubscribe(postId, session["logged_in"])
         return redirect("/post/{}".format(postId))
