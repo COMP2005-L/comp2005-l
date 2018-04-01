@@ -7,13 +7,14 @@ Controller for registration
 
 """
 
+
 class RegisterController:
 
     @staticmethod
     def get():
-	"""
-	Handles returning the view for register page
-        :return: jinjaTemplate
+        """
+        Handles returning the view for register page
+            :return: jinjaTemplate
 
         """
 
@@ -22,11 +23,11 @@ class RegisterController:
     @staticmethod
     def post():
 
-	"""
-        Handles returning the view for register page, and redirects user to post view once registeration is completed
-        :return: jinjaTemplate
-
         """
+            Handles returning the view for register page, and redirects user to post view once registeration is completed
+            :return: jinjaTemplate
+
+            """
         error = None
         if request.method == "POST":
             email = request.form.get("email")
