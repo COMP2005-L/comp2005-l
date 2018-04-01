@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, jsonify
 from app import app
 from app.controllers.login import Login
-from app.controllers.login import Logout
+from app.controllers.logout import Logout
 from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
@@ -17,7 +17,7 @@ def redirect():
     return Login.post()
 
 
-@app.route("/logout", methods=["POST"])
+@app.route("/logout", methods=["GET"])
 def logout():
 	return Logout.post()
 
