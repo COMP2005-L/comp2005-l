@@ -7,9 +7,6 @@ from app import db
 
 class UserProfile:
 
-
-
-
     @staticmethod
     def showUserProfile(username, postId):
         """
