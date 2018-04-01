@@ -11,6 +11,7 @@ class BaseFixture(unittest.TestCase):
 
     def setUp(self):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
+        app.config["SECRET_KEY"] = "sekrit!"
         app.testing = True
         app.db = SQLAlchemy(app)
         self.app = app.test_client()
