@@ -1,6 +1,7 @@
 from flask import render_template, session, redirect, url_for, request
 from app.models.Post import Post
 from app.models.User import User
+from app.models.Comment import Comment
 from app.models.Notification import Notification
 from app.models.DiscussionGroup import DiscussionGroup
 from app.services.NotificationService import NotificationService
@@ -33,7 +34,14 @@ class PostController:
         :return: jinjaTemplate
         """
         post = Post.query.filter_by(id=postId).first()
-        return render_template('post_view.html', title=post.title, body=post.body, postedby=post.postedby)
+        comments = Comment.query.filter_by(post_id=postId).all()
+        return render_template('post_view.html',
+                               postId=postId,
+                               title=post.title,
+                               body=post.body,
+                               postedby=post.postedby,
+                               comments=comments
+                               )
 
     @staticmethod
     def post(postId):
@@ -87,3 +95,14 @@ class PostController:
 
         else:
             return redirect("/login")
+
+    @staticmethod
+    def addComment(postId):
+        body = request.form.get("body")
+        userId = session["logged_in"]
+
+        newComment = Comment(body=body, poster_id=userId, post_id=postId)
+        db.session.add(newComment)
+        db.session.commit()
+
+        return redirect("/post/{}".format(postId))

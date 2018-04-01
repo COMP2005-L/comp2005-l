@@ -53,3 +53,8 @@ def createGroup():
 @app.route("/groups/create", methods=["GET"])
 def showCreateGroup():
     return GroupController.showCreateGroup()
+
+
+@app.route("/comments/create/<int:postId>", methods=["POST"])
+def createComment(postId):
+    return PostController.addComment(postId)
