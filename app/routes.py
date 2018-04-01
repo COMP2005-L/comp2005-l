@@ -6,6 +6,7 @@ from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
 
+@app.route("/")
 @app.route("/login", methods=["GET"])
 def login():
     return Login.get()
