@@ -20,6 +20,7 @@ class DiscussionGroup(db.Model):
         Examples:
             -To instantiate, use keyword parameters
                 example = DiscussionGroup(discussiontitle = "Awesome Group!",  discussiondateposted = <<today's date>>)
+
     """
 
 
