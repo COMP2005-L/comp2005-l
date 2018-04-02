@@ -34,8 +34,10 @@ class GroupController:
         Handles returning the view for creating a group, providing the list of users of the application to the template
         :return: jinjaTemplate
         """
-
-        users = User.query.order_by(User.username).all()
-        dictUsers = [JsonService.prepareModel(user) for user in users]
-        jsonUsers = json.dumps(dictUsers)
-        return render_template("create_group.html", users=jsonUsers)
+        if session.get("logged_in"):
+            users = User.query.order_by(User.username).all()
+            dictUsers = [JsonService.prepareModel(user) for user in users]
+            jsonUsers = json.dumps(dictUsers)
+            return render_template("create_group.html", users=jsonUsers)
+        else:
+            return render_template("login.html")
