@@ -5,12 +5,12 @@ from app.controllers.logout import Logout
 from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
+from app.controllers.profile import ProfileController
 
 @app.route("/")
 @app.route("/login", methods=["GET"])
 def login():
     return Login.get()
-
 
 
 @app.route("/login", methods=["POST"])
@@ -63,3 +63,7 @@ def createGroup():
 @app.route("/groups/create", methods=["GET"])
 def showCreateGroup():
     return GroupController.showCreateGroup()
+
+@app.route("/user", methods=["GET"])
+def showProfile():
+    return ProfileController.showProfile()

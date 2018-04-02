@@ -9,9 +9,43 @@
     padding: 10px;
     border-radius: 3px;
 ">
-    <h1>{{title}}</h1>
+    <div>
+        <h1 style="display: inline-block;">{{title}}</h1>
+        <form action="/{{'subscriptions/{}/{}'.format('remove' if isSubscribed else 'add', postId)}}"
+              method="POST"
+              style="
+            display: inline-block;
+            float: right;
+        ">
+            <input type="submit" value="{{'Unsubscribe' if isSubscribed else 'Subscribe'}}">
+        </form>
+    </div>
     <p>Posted by: {{postedby.username}}</p>
     <p>{{body}}</p>
 </div>
 {% endif %}
+<div style="margin: 0 auto; width: 80%; margin-top: 10px;">
+    {% for comment in comments %}
+    <div style="
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        padding: 0px 2%;
+        width: 30%;
+        margin-bottom: 10px;
+    ">
+        <h4>{{comment.postedby.username}}</h4>
+        <p>{{comment.body}}</p>
+    </div>
+    {% endfor %}
+</div>
+<form action="/comments/create/{{postId}}" method="POST" style="
+        margin: 0 auto;
+        display: block;
+        width: 80%;
+        padding-top: 10px;
+    ">
+    <h2>Add a new comment:</h2>
+    <textarea name="body" maxlength="255" style="width: 50%"></textarea>
+    <input type="submit" value="Add comment" style="display:block; margin-top: 10px;"/>
+</form>
 {% endblock %}
