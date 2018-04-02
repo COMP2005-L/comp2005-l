@@ -15,12 +15,42 @@
           <td><h4>Registered on: {{user.createdAt}}</h4></td>
       </tr>
   </table>
-
-<h2>Send a direct Message!</h2>
+{% if user.id != session.get("logged_in") %}
+<form action="/userProfile/{{user.id}}" method="POST">
+    <h2>Send a direct Message!</h2>
     <dd><textarea name="body" rows="5" cols="40"></textarea>
     </dd>
-    <dd><input type="submit" value="send">
+    <dd><input type="submit" value="Send">
     </dd>
     <hr>
+</form>
+<h2>Conversation</h2>
+<div style="
+            width: 50%;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            overflow-y: scroll;
+            border-radius: 3px;
+            margin-top: 10px;
+        ">
+    {% for message in messages %}
+    <div style="width: 100%; text-align: {{'right' if message.sender.id == session.get('logged_in') else 'left'}};">
+        <div style="
+                    width: 45%;
+                    margin: 5px;
+                    display: inline-block;
+                    padding: 2px 5px;
+                    overflow-wrap: break-word;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                ">
+            <font style="font-weight: bold;">{{message.sender.username}}</font></br>
+            {{message.body}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}
