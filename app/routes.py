@@ -13,7 +13,6 @@ def login():
     return Login.get()
 
 
-
 @app.route("/login", methods=["POST"])
 def redirect():
     return Login.post()

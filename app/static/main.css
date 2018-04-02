@@ -2,12 +2,16 @@ body{
     font-family: "Open Sans", sans-serif;
     margin: 0;
     margin-left: 16px;
+    background-repeat: repeat;
+    background-image: url(background.png);
+    background-color: rgba(0, 0, 0, 0.3);
 }
+
 .navbar {
 	border: 0;
     padding: 20px 5%;
-    background-color: #fdbf09;
-    box-shadow: 1px 1px 10px 2px #d2b30a;
+    background-color: #910000;
+    box-shadow: 1px 1px 10px 2px #000000;
     width: 95%;
     margin-bottom: 20px;
     margin-left: -16px;
@@ -18,17 +22,18 @@ body{
 }
 
 .navlink {
-	background: rgba(255,255,255,0.3);
-    border: 1px solid #fff;
-    color: #fff;
+	background: rgba(0,0,0,0.1);
+    border: 1px solid #000;
+    color: #000;
     font-size: 24px;
     border-radius: 3px;
     cursor: pointer;
     margin-right: 8px;
+    text-decoration-line: none;
 }
 
 .navlink:hover{
-    background: rgba(255,255,255,0.5);
+    background: rgba(0,0,0,0.3);
 }
 
 #notification-area{
@@ -40,15 +45,15 @@ body{
 }
 
 #notification-count{
-    color: #fff;
+    color: #000;
 }
 
 #notifications{
     position: absolute;
     width: 200px;
     right: 35px;
-    border: 1px solid #efefef;
-    background: #fff;
+    border: 1px solid #101010;
+    background: #000;
     border-radius: 3px;
     display: none;
 }
