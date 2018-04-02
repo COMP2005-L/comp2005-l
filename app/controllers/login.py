@@ -9,7 +9,7 @@ class Login:
         Handles returning the view for login page
         :return: jinjaTemplate
         """
-        if session["logged_in"]:
+        if session.get("logged_in"):
             return render_template("/ListView.html")
         else:
             return render_template("/login.html")
