@@ -6,6 +6,7 @@ from app.controllers.post import PostController
 from app.controllers.group import GroupController
 from app.controllers.register import RegisterController
 from app.controllers.profile import ProfileController
+from app.controllers.userprofile import UserProfile
 
 @app.route("/")
 @app.route("/login", methods=["GET"])
@@ -20,7 +21,7 @@ def redirect():
 
 @app.route("/logout", methods=["GET"])
 def logout():
-	return Logout.post()
+    return Logout.post()
 
 
 @app.route("/register", methods=["GET"])
@@ -67,3 +68,26 @@ def showCreateGroup():
 @app.route("/user", methods=["GET"])
 def showProfile():
     return ProfileController.showProfile()
+
+@app.route("/comments/create/<int:postId>", methods=["POST"])
+def createComment(postId):
+    return PostController.addComment(postId)
+
+
+@app.route("/subscriptions/add/<int:postId>", methods=["POST"])
+def subscribe(postId):
+    return PostController.subscribe(postId)
+
+
+@app.route("/subscriptions/remove/<int:postId>", methods=["POST"])
+def unsubscribe(postId):
+    return PostController.unsubscribe(postId)
+
+
+@app.route("/userProfile/<string:username>", methods=["GET"])
+def showUserProfile(username):
+    return UserProfile.showUserProfile(username)
+
+@app.route("/userProfile", methods=["POST"])
+def create_direct_messaging_userprofile(userId):
+    return UserProfile.directMessaging(userId)

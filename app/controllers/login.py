@@ -1,7 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, session
 from app.models.User import User
 
-
 class Login:
 
     @staticmethod
@@ -10,7 +9,10 @@ class Login:
         Handles returning the view for login page
         :return: jinjaTemplate
         """
-        return render_template("login.html")
+        if session.get("logged_in"):
+            return render_template("/ListView.html")
+        else:
+            return render_template("/login.html")
 
     @staticmethod
     def post():
@@ -28,6 +30,7 @@ class Login:
             else:
                 session["logged_in"] = user.id
                 flash("You have successfully logged in!")
-                return redirect(url_for('show_post_editor'))
+                return redirect(url_for('list'))
 
         return render_template("login.html", error=error)
+

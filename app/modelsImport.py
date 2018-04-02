@@ -3,3 +3,5 @@ from app.models.Post import Post
 from app.models.Notification import Notification
 from app.models.Subscription import Subscription
 from app.models.DiscussionGroup import DiscussionGroup
+from app.models.Comment import Comment
+from app.models.DirectMessaging import DirectMessaging
