@@ -48,6 +48,6 @@ class RegisterController:
                 db.session.commit()
                 session["logged_in"] = user.id
                 flash("You have successfully logged in!")
-                return redirect(url_for('show_post_editor'))
+                return redirect(url_for('list'))
 
         return render_template("registration.html", error=error)
