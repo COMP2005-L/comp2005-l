@@ -23,21 +23,38 @@ class TestDiscussionGroups(BaseFixture):
         self.user2Id = user2.id
 
 
-    def test_subscription_notification(self):
+    def test_subscription(self):
+
         self.app.post("/postEdit", data={
             "title": "title",
             "body": "body",
             "poster_id": [self.userId],
         })
+
         post = Post.query.filter_by(title="title").first()
         SubscriptionService.subscribe(post.id, self.user2Id)
         subscription = Subscription.query.filter_by(postid=post.id)
         self.assertTrue(subscription)   # subscription exists
+
+    def test_notification(self):
+
+        self.app.post("/postEdit", data={
+            "title": "title",
+            "body": "body",
+            "poster_id": [self.userId],
+        })
+
+        post = Post.query.filter_by(title="title").first()
+        SubscriptionService.subscribe(post.id, self.user2Id)
+        subscription = Subscription.query.filter_by(postid=post.id)
+
+
         self.app.post("/addComment", data={
             "body": "body",
             "poster_id": [self.user1Id],
             "post_id": post.id
         })
+
         notification = Notification.query.filter_by(title="New Comment")
         self.assertTrue(notification)   # notification exists
 
