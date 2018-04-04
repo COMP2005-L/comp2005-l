@@ -9,7 +9,19 @@ from app import db
 class UserProfile:
 
     @staticmethod
-    def showUserProfile(username):
+    def showUserProfile():
+
+        """
+        Handles returning the view for user profiles
+        :return:
+
+        """
+
+        user = User.query.filter_by(id=session.get("logged_in")).first()
+        return render_template('user_Profile.html', user=user)
+
+    @staticmethod
+    def getUserMessages(username):
         """
             Handles the get method for the user to their profile page where they
             can view posts and direct message
