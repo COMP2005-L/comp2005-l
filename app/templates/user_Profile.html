@@ -15,7 +15,7 @@
           <td><h4>Registered on: {{user.createdAt}}</h4></td>
       </tr>
   </table>
-{% if user.id != session.get("logged_in") %}
+{% if user.id == session.get("logged_in") %}
 <form action="/userProfile/{{user.id}}" method="POST">
     <h2>Send a direct Message!</h2>
     <dd><textarea name="body" rows="5" cols="40"></textarea>
