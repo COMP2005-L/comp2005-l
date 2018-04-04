@@ -23,11 +23,8 @@ class TestUserAuthentication(BaseFixture):
         self.assertTrue(b'</form>' in response.data) # This shows if the username and password form is displayed
 
     def test_Login(self):
-
-        with app.app_context():
-            self.app.post("/login", data = {"username": "user", "password": "Hello"})
-            user = User.query.filter_by(username = "user").first()
-            self.assertEqual(user.id, session["logged_in"]) # This shows if a user is logged in
+        response = self.app.post("/login", data={"username": "user", "password": "Hello"}, follow_redirects=True)
+        self.assertTrue(b'navbar' in response.data)
 
     def test_Registration(self):
 

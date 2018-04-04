@@ -90,12 +90,12 @@ class PostController:
     @staticmethod
     def addComment(postId):
         body = request.form.get("body")
-        userId = session["logged_in"]
+        userId = session.get("logged_in")
 
         newComment = Comment(body=body, poster_id=userId, post_id=postId)
         db.session.add(newComment)
 
-        poster = User.query.filter_by(id=session["logged_in"]).first()
+        poster = User.query.filter_by(id=userId).first()
         subscriptions = SubscriptionService.getSubscriptions(postId)
         for subscription in subscriptions:
             recipient = User.query.filter_by(id=subscription.subscriber).first()

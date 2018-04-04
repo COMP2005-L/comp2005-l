@@ -10,7 +10,7 @@ from app.services.NotificationService import NotificationService
 import unittest
 
 
-class TestDiscussionGroups(BaseFixture):
+class TestSubscriptionNotification(BaseFixture):
 
     def setUp(self):
         super().setUp()
@@ -19,61 +19,37 @@ class TestDiscussionGroups(BaseFixture):
         self.db.session.add(user1)
         self.db.session.add(user2)
         self.db.session.commit()
+        post = Post(title="title", body="body", poster_id=user1.id)
+        self.db.session.add(post)
+        self.db.session.commit()
         self.user1Id = user1.id
         self.user2Id = user2.id
+        self.postId = post.id
 
 
     def test_subscription(self):
-
-        self.app.post("/postEdit", data={
-            "title": "title",
-            "body": "body",
-            "poster_id": [self.userId],
-        })
-
-        post = Post.query.filter_by(title="title").first()
-        SubscriptionService.subscribe(post.id, self.user2Id)
-        subscription = Subscription.query.filter_by(postid=post.id)
+        SubscriptionService.subscribe(self.postId, self.user2Id)
+        subscription = Subscription.query.filter_by(post=self.postId).first()
         self.assertTrue(subscription)   # subscription exists
-        SubscriptionService.unsubscribe(post.id, self.user2Id)
-        subscription = Subscription.query.filter_by(postid=post.id)
-        self.assertFalse(subscription)  # subscription no longer exists
 
     def test_notification(self):
+        SubscriptionService.subscribe(self.postId, self.user2Id)
 
-        self.app.post("/postEdit", data={
-            "title": "title",
-            "body": "body",
-            "poster_id": [self.userId],
-        })
-
-        post = Post.query.filter_by(title="title").first()
-        SubscriptionService.subscribe(post.id, self.user2Id)
-        subscription = Subscription.query.filter_by(postid=post.id)
-
-
-        self.app.post("/addComment", data={
-            "body": "body",
-            "poster_id": [self.user1Id],
-            "post_id": post.id
-        })
-
-        notification = Notification.query.filter_by(title="New Comment")
-        self.assertTrue(notification)   # notification exists
+        with self.app as c:
+            with c.session_transaction() as session:
+                session["logged_in"] = self.user1Id
+            self.app.post("/addComment/{}".format(self.postId), data={
+                "body": "body"
+            })
+            notification = Notification.query.filter_by(title="New Comment")
+            self.assertTrue(notification)  # notification exists
 
 
     def test_unsubscribe(self):
-        self.app.post("/postEdit", data={
-            "title": "title",
-            "body": "body",
-            "poster_id": [self.userId],
-        })
-
-        post = Post.query.filter_by(title="title").first()
-        SubscriptionService.subscribe(post.id, self.user2Id)
-        SubscriptionService.unsubscribe(post.id, self.user2Id)
-        subscription = Subscription.query.filter_by(postid=post.id)
-        self.assertFalse(subscription)  # subscription no longer exists
+        SubscriptionService.subscribe(self.postId, self.user2Id)
+        SubscriptionService.unsubscribe(self.postId, self.user2Id)
+        subscription = Subscription.query.filter_by(post=self.postId).first()
+        self.assertIsNone(subscription)  # subscription no longer exists
 
 if __name__ == '__main__':
     unittest.main()
