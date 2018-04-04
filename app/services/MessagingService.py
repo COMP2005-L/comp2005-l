@@ -25,7 +25,8 @@ class MessagingService:
                                     read=False,
                                     ref='/userProfile/{}'.format(directMessage.sender.username),
                                     recipient=directMessage.recipient.id)
-
+        db.session.add(notification)
+        db.session.commit()
         NotificationService.dispatch(notification)
 
     @staticmethod
