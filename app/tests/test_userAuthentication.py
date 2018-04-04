@@ -24,7 +24,7 @@ class TestUserAuthentication(BaseFixture):
 
     def test_Login(self):
         response = self.app.post("/login", data={"username": "user", "password": "Hello"}, follow_redirects=True)
-        self.assertTrue(b'navbar' in response.data)
+        self.assertTrue(b'navbar' in response.data)  # logged in users see the navbar
 
     def test_Registration(self):
 
