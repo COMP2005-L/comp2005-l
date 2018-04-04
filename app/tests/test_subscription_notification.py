@@ -35,6 +35,9 @@ class TestDiscussionGroups(BaseFixture):
         SubscriptionService.subscribe(post.id, self.user2Id)
         subscription = Subscription.query.filter_by(postid=post.id)
         self.assertTrue(subscription)   # subscription exists
+        SubscriptionService.unsubscribe(post.id, self.user2Id)
+        subscription = Subscription.query.filter_by(postid=post.id)
+        self.assertFalse(subscription)  # subscription no longer exists
 
     def test_notification(self):
 
@@ -59,5 +62,18 @@ class TestDiscussionGroups(BaseFixture):
         self.assertTrue(notification)   # notification exists
 
 
+    def test_unsubscribe(self):
+        self.app.post("/postEdit", data={
+            "title": "title",
+            "body": "body",
+            "poster_id": [self.userId],
+        })
+
+        post = Post.query.filter_by(title="title").first()
+        SubscriptionService.subscribe(post.id, self.user2Id)
+        SubscriptionService.unsubscribe(post.id, self.user2Id)
+        subscription = Subscription.query.filter_by(postid=post.id)
+        self.assertFalse(subscription)  # subscription no longer exists
+        
 if __name__ == '__main__':
     unittest.main()
