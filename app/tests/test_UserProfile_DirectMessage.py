@@ -23,16 +23,22 @@ class TestUserProfileDirectMessage(BaseFixture):
         self.userEmail = user.email
 
     def test_showCreateUserProfile(self):
-        response = self.app.get("/userProfile/{}".format(self.userId))
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(self.username.encode() in response.data)  # The username is on the page
-        self.assertTrue(self.userEmail.encode() in response.data)  # The user email is on the page
+        with self.app as c:
+            with c.session_transaction() as session:
+                session["logged_in"] = self.userId
+            response = self.app.get("/userProfile/{}".format(self.username))
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(self.username.encode() in response.data)  # The username is on the page
+            self.assertTrue(self.userEmail.encode() in response.data)  # The user email is on the page
 
 
     def test_showDirectMessage(self):
-        response = self.app.get("/userProfile/{}".format(self.userId))
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(b'</form>' in response.data) #there is a form to send a direct message
+        with self.app as c:
+            with c.session_transaction() as session:
+                session["logged_in"] = self.userId
+            response = self.app.get("/userProfile/{}".format(self.username))
+            self.assertEqual(response.status_code, 200)
+            self.assertTrue(b'</form>' in response.data)  # there is a form to send a direct message
 
     def test_DirectMessageNotification(self):
         with self.app as c:
