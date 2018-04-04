@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Registration</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>User Registration</strong><br>
+    <strong>Primary Actor:</strong> User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>User - wants to register an account on the platform
+    </p>
+</blockquote>
+<p><strong>Precondition:</strong> User is not logged in.<br>
+    <strong>Trigger:</strong> User clicks "Not registered" on the login form.<br>
+    <strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>User fills in the registration form with username, email and password</li>
+        <li>User clicks the registration button</li>
+        <li>Form data is passed to the backend, and a user account is generated</li>
+        <li>User is redirected to his profile page</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            3a. User entered an existing username/account into the form
+            <ol style="list-style-type: none;">
+                <li>3a1. Do not generate a new user account</li>
+                <li>3a2. Return the registration page view with a note about the username/email being already taken.
+                </li>
+            </ol>
+            <br/>
+            3b. User entered an insecure password (< 8 characters long)
+            <ol style="list-style-type: none;">
+                <li>3b1. Refuse to generate new user account.</li>
+                <li>3b2. Return the registration page view with a note about the required minimum length of password
+                </li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/registration.png"/>
+</body>
+</html>

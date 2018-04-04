@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Post Editor</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Post Editor</strong><br>
+    <strong>Primary Actor:</strong> Author <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>Author - wants to write up a post / edit a previous post
+    </p>
+</blockquote>
+<p><strong>Precondition:</strong> Author is logged into the platform.<br>
+    <strong>Trigger:</strong>
+<ul>
+    <li>Author clicks on the new post button from the top navigation bar, OR</li>
+    <li>Author clicks on the edit post button on an existent post</li>
+</ul>
+<br>
+<strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>Author fills in the post title</li>
+        <li>Author fills in the post body, with access to a set of formatting tools for fonts and blocks</li>
+        <li>Author selects their preferred discussion group for the post, with the discussion group defaulting to
+            "None"
+        </li>
+        <li>Author publishes/submits the post</li>
+        <li>Data is passed to the backend, where the post is created or modified if it already exists</li>
+        <li>Author is redirected to the published post</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            4a. Author submits an empty post
+            <ol style="list-style-type: none;">
+                <li>4a1. Reject publishing the post</li>
+                <li>4a2. Return to the post editor page with a note stating that the post can not be empty.
+                </li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/postEditor.png"/>
+</body>
+</html>
