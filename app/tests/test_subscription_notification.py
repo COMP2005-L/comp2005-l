@@ -74,6 +74,6 @@ class TestDiscussionGroups(BaseFixture):
         SubscriptionService.unsubscribe(post.id, self.user2Id)
         subscription = Subscription.query.filter_by(postid=post.id)
         self.assertFalse(subscription)  # subscription no longer exists
-        
+
 if __name__ == '__main__':
     unittest.main()
