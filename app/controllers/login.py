@@ -10,6 +10,7 @@ class Login:
 
     @staticmethod
     def post():
+        # type: () -> object
         error = None
         if request.method == "POST":
             user = User.query.filter_by(username=request.form['username']).first()
