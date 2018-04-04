@@ -16,11 +16,14 @@ class TestUserProfileDirectMessage(BaseFixture):
     def setUp(self):
         super().setUp()
         user = User(username='user', email='test@test.com', password='Hey!')
+        user2 = User(username='user2', email='test2@test.com', password='Hey!')
         self.db.session.add(user)
+        self.db.session.add(user2)
         self.db.session.commit()
         self.userId = user.id
         self.username = user.username
         self.userEmail = user.email
+        self.user2name = user2.username
 
     def test_showCreateUserProfile(self):
         with self.app as c:
@@ -35,7 +38,7 @@ class TestUserProfileDirectMessage(BaseFixture):
         with self.app as c:
             with c.session_transaction() as session:
                 session["logged_in"] = self.userId
-            response = self.app.get("/userProfile/{}".format(self.username))
+            response = self.app.get("/userProfile/{}".format(self.user2name))
             self.assertEqual(response.status_code, 200)
             self.assertTrue(b'</form>' in response.data)  # there is a form to send a direct message
 
