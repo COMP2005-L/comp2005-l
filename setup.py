@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='app',
@@ -10,4 +10,9 @@ setup(
         'flask-migrate',
         'flask-socketio'
     ],
+
+    package_data = { '': ['config.py', 'app.db', 'test.db', 'README.md','LICENSE', 'migrations/*', 'documentation/*'],
+                    'app': ['*']}
+
+
 )
