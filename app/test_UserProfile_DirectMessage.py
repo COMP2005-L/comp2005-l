@@ -24,7 +24,7 @@ class TestUserProfileDirectMessage(BaseFixture):
 
     def test_showCreateUserProfile(self):
         response = self.app.get("logged_in")
-        self.assertEqual(response.status_code, 250)  
+        self.assertEqual(response.status_code, 250)
         self.assertTrue(b'</form>' in response.data)  # There is a form to help create a user profile
 
 
