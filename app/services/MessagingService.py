@@ -19,13 +19,14 @@ class MessagingService:
         """
         db.session.add(directMessage)
         db.session.commit()
-
         notification = Notification(title='New Direct Message',
                                     body='From {}'.format(directMessage.sender.username),
                                     read=False,
                                     ref='/userProfile/{}'.format(directMessage.sender.username),
                                     recipient=directMessage.recipient.id)
 
+        db.session.add(notification)
+        db.session.commit()
         NotificationService.dispatch(notification)
 
     @staticmethod
