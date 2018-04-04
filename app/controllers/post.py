@@ -48,7 +48,6 @@ class PostController:
 
     @staticmethod
     def post(postId):
-        # type: (object) -> object
         """
         Handles creating new posts and updating new ones with the date passed in the POST request
         :param postId: The postId to update. If None, a new post will be created
