@@ -53,5 +53,5 @@ class TestUserProfileDirectMessage(BaseFixture):
             notification = Notification.query.filter_by(title='New Direct Message').first()
             self.assertTrue(notification)  # A notification has been created for the direct messaging event
 
-    if __name__ == '__main__':
-        unittest.main()
+if __name__ == '__main__':
+	unittest.main()
