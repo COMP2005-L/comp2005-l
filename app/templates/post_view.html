@@ -45,7 +45,7 @@
         width: 30%;
         margin-bottom: 10px;
     ">
-        <h4>{{comment.postedby.username}}</h4>
+        <h4><a href="/userProfile/{{ comment.postedby.username }}">{{comment.postedby.username}}</a></h4>
         <p>{{comment.body}}</p>
     </div>
     {% endfor %}
