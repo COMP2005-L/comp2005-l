@@ -62,12 +62,13 @@ class PostController:
 
             selectedPost.title = title
             selectedPost.body = body
+            selectedPost.group_id = None if groupId == -1 else groupId
 
             db.session.commit()
 
         else:
             postedBy = User.query.filter_by(id=session.get("logged_in")).first()
-            newPost = Post(title=title, body=body, postedby=postedBy)
+            newPost = Post(title=title, body=body, postedby=postedBy, group_id=None if groupId == -1 else groupId)
             db.session.add(newPost)
 
             db.session.commit()
@@ -81,7 +82,11 @@ class PostController:
         :return: result: dict
         """
         if session.get("logged_in"):
-            posts = Post.query.order_by(Post.title).all()
+            user = User.query.filter_by(id=session.get("logged_in")).first()
+            groupIds = tuple(group.discussionid for group in user.groups) + (None,)
+            posts = []
+            for groupId in groupIds:
+                posts.extend(Post.query.filter(Post.group_id == groupId).order_by(Post.title).all())
             return render_template("ListView.html", posts=posts)
 
         else:

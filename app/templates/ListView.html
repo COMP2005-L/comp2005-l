@@ -1,7 +1,9 @@
 {% extends "main.html" %}
 {% block body %}
 {% if session.logged_in %}
+{% if posts|length > 0 %}
 <em>You have Posts!!!!!!</em>
+{% endif %}
 {% for post in posts %}
 <a href="/post/{{post.id}}" style="
             width: 70%;

@@ -22,3 +22,4 @@ class Post(db.Model):
     body = db.Column(db.String(255), nullable=False)
     poster_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     postedby = db.relationship('User', uselist=False, lazy=False)  # 1-1,auto-retrieved
+    group_id = db.Column(db.Integer, db.ForeignKey("discussion.discussionid"), nullable=True)
