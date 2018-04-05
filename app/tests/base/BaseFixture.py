@@ -2,7 +2,7 @@ import unittest
 import tempfile
 import os
 
-from config import basedir
+from app.config import basedir
 from app import app
 from flask_sqlalchemy import SQLAlchemy
 
