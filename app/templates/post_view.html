@@ -19,6 +19,16 @@
         ">
             <input type="submit" value="{{'Unsubscribe' if isSubscribed else 'Subscribe'}}">
         </form>
+        {% if session.get("logged_in") == postedby.id %}
+        <form action="/{{'postEdit/{}'.format(postId)}}"
+              method="GET"
+              style="
+                display: inline-block;
+                float: right;
+            ">
+            <input type="submit" value="Edit">
+        </form>
+        {% endif %}
     </div>
     <p>Posted by: {{postedby.username}}</p>
     <p>{{body}}</p>
