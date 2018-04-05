@@ -9,6 +9,7 @@ setup(
         'flask',
         'flask-sqlalchemy',
         'flask-migrate',
-        'flask-socketio'
+        'flask-socketio',
+        'wheel'
     ],
 )
