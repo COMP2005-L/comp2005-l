@@ -5,10 +5,11 @@ MUN COMP2005 Winter 2018, Team L group project
 _NOTE_: If you are not doing so already, you can read a preformatted version for this README on the project's repository: https://github.com/COMP2005-L/comp2005-l
 
 ## Installation
-To install the provided package, use `pip install {distribution-file-name}`, where `{distribution-file-name}` is the name of the provided zip file, with the extension included.
+To install the provided package, first ensure that `wheel` is installed (you can install it using `pip install wheel`)
+
+Use `pip install {distribution-file-name}`, where `{distribution-file-name}` is the name of the provided tar.gz file, with the extension included.
 
 ## Running the App
-Navigate to the folder where the package was installed (such that the `app.db` file is a direct child of the current directory), and run the following commands:
 ```
 $ export FLASK_APP=app
 $ flask run
