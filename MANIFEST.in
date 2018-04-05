@@ -1,0 +1,7 @@
+graft .
+prune .git
+prune app.egg-info
+prune .idea
+prune __pycache__
+exclude .gitignore
+global-exclude *.pyc

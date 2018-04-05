@@ -2,17 +2,13 @@ from setuptools import setup, find_packages
 
 setup(
     name='app',
-    packages=['app'],
+    packages=find_packages(),
     include_package_data=True,
     install_requires=[
         'flask',
         'flask-sqlalchemy',
         'flask-migrate',
-        'flask-socketio'
+        'flask-socketio',
+        'wheel'
     ],
-
-    package_data = { '': ['config.py', 'app.db', 'test.db', 'README.md','LICENSE', 'migrations/*', 'documentation/*'],
-                    'app': ['*']}
-
-
 )
