@@ -18,3 +18,8 @@ The app should be running on `localhost:5000` by default. You can navigate to th
 ## Running Tests
 
 To run the tests, navigate to the folder where the package was installed (such that the `app.db` file is a direct child of the current directory), and run `python -m unittest discover`
+
+## Test data for User
+
+For testing purposes, there's test data in the database for better functionality of the prototype. A username and password is provided. 
+The username is "admin" and password is "password". To test registration, click on "Click here to register!"
