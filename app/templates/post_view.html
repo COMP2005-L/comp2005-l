@@ -30,7 +30,9 @@
         </form>
         {% endif %}
     </div>
-    <p>Posted by: {{postedby.username}}</p>
+    <p>Posted by: <a href="/userProfile/{{ postedby.username }}">{{postedby.username}}</a></p>
+
+
     <p>{{body}}</p>
 </div>
 {% endif %}
