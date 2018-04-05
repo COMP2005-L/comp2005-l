@@ -9,7 +9,7 @@
           <td><h1>User: {{ user.username }}</h1></td>
       </tr>
       <tr>
-          <td><h4>{{user.email}}</h4></td>
+          <td><h4>Email: {{user.email}}</h4></td>
       </tr>
       <tr>
           <td><h4>Registered on: {{user.createdAt}}</h4></td>
@@ -33,6 +33,7 @@
             overflow-y: scroll;
             border-radius: 3px;
             margin-top: 10px;
+            background: #fff;
         ">
     {% for message in messages %}
     <div style="width: 100%; text-align: {{'right' if message.sender.id == session.get('logged_in') else 'left'}};">

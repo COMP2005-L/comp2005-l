@@ -3,8 +3,7 @@ body{
     margin: 0;
     margin-left: 16px;
     background-repeat: repeat;
-    background-image: url(background.png);
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(158, 158, 158, 0.3);
 }
 
 .navbar {
@@ -23,8 +22,8 @@ body{
 
 .navlink {
 	background: rgba(0,0,0,0.1);
-    border: 1px solid #000;
-    color: #000;
+    border: 1px solid #EEE;
+    color: #EEE;
     font-size: 24px;
     border-radius: 3px;
     cursor: pointer;
@@ -45,7 +44,7 @@ body{
 }
 
 #notification-count{
-    color: #000;
+    color: #EEE;
 }
 
 #notifications{
@@ -53,7 +52,7 @@ body{
     width: 200px;
     right: 35px;
     border: 1px solid #101010;
-    background: #000;
+    background: #EEE;
     border-radius: 3px;
     display: none;
 }

@@ -36,7 +36,7 @@ class PostController:
         """
         post = Post.query.filter_by(id=postId).first()
         comments = Comment.query.filter_by(post_id=postId).all()
-        isSubscribed = SubscriptionService.isSubscribed(postId, session["logged_in"])
+        isSubscribed = SubscriptionService.isSubscribed(postId, session.get("logged_in"))
         return render_template('post_view.html',
                                postId=postId,
                                title=post.title,
@@ -66,7 +66,7 @@ class PostController:
             db.session.commit()
 
         else:
-            postedBy = User.query.filter_by(id=session['logged_in']).first()
+            postedBy = User.query.filter_by(id=session.get("logged_in")).first()
             newPost = Post(title=title, body=body, postedby=postedBy)
             db.session.add(newPost)
 
@@ -90,12 +90,12 @@ class PostController:
     @staticmethod
     def addComment(postId):
         body = request.form.get("body")
-        userId = session["logged_in"]
+        userId = session.get("logged_in")
 
         newComment = Comment(body=body, poster_id=userId, post_id=postId)
         db.session.add(newComment)
 
-        poster = User.query.filter_by(id=session["logged_in"]).first()
+        poster = User.query.filter_by(id=userId).first()
         subscriptions = SubscriptionService.getSubscriptions(postId)
         for subscription in subscriptions:
             recipient = User.query.filter_by(id=subscription.subscriber).first()
