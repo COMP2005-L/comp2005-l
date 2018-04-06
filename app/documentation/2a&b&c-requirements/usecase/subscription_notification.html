@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Subscription and notification</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Subscription and notification</strong><br>
+    <strong>Primary Actor:</strong> User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>User - wants to subscribe or unsubscribe to threads and posts and wants to know whether a post is successfully posted on the subscription thread or not</p>
+</blockquote>
+<p><strong>Precondition:</strong> User is logged into the platform.<br>
+    <strong>Trigger:</strong>
+<ul>
+    <li>User clicks on the "subscribe" button under the thread or the post, OR</li>
+    <li>User clicks on the "unsubscribe" button under the thread or the post.</li>
+    <li>User makes a post on the subscribed thread.</li>
+</ul>
+<br>
+<strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>User clicks the "subscribe" button or the "unsubscribe" button under the thread or the post.</li>
+        <li>Subscription data is passed to the backend, where the user profile is stored.</li>
+        <li>User makes a post on the subscribed thread.</li>
+        <li>A notification appears to show that user has successfully posted a post on the subscribed thread.</li>
+        <li></li>
+        <li>Author is redirected to the published post</li>
+    </ol>
+</blockquote>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            1a. User clicks the "subscribe" button under a thread or a post, which is already subscribed by user.
+            <ol style="list-style-type: none;">
+                <li>1a1. A pop-up notification notifies user that he/she has already subscribed the thread or the post.</li>
+		        <li>1a2. Refuse to subscribe the thread or the post again.</li>
+            </ol>
+	    <br/>
+	    1b. User clicks the "unsubscribe" button under a thread or a post, which hasn't subscribed by the user yet.
+	    <ol style="list-style-type: none;">
+	    	<li>1b1. A pop-up notification notifies user that he/she has not subscribed the thread or the post. </li>
+		    <li>1b2. Refuse to unsubscribe the thread or the post.</li>
+        </li>
+    </ol>
+</blockquote>
+<img style="..." src="diagrams/Subscription_Notification.png"/>
+</body>
+</html>

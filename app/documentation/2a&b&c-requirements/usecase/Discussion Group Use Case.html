@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Use Case - Create Discussion Group</title>
+</head>
+<body>
+<p><strong>Title:</strong> <strong>Create Discussion Groups</strong><br>
+    <strong>Primary Actor:</strong> User <br>
+    <strong>Stakeholders and Interests:</strong>
+</p>
+<blockquote>
+    <p>User - wants to create a Discussion Group for a particular topic
+    </p>
+</blockquote>
+<p><strong>Precondition:</strong> User is not in a group<br>
+    <strong>Trigger:</strong> User clicks "Create Group" on main page<br>
+    <strong>Main success scenario:</strong>
+</p>
+<blockquote>
+    <ol>
+        <li>User uses search bar to find users by username or tags used</li>
+        <li>User clicks those who they wish to add</li>
+		<li>Group is formed and invitations are sent to the invited users</li>
+        <li>User becomes the Group Admin</li>
+    </ol>
+</blockquote>
+<p><strong>Extensions:</strong></p>
+<blockquote>
+    <ol style="list-style-type: none;">
+        <li>
+            1a. User adds no one
+            <ol style="list-style-type: none;">
+                <li>1a1. Group is formed with the User as the only member</li>
+                <li>1a2. User becomes the Group Admin</li>
+            </ol>
+            <br/>
+            3a. User has the same Discussion Group name as another group
+            <ol style="list-style-type: none;">
+                <li>3a1. Refuse to generate new Discussion Group</li>
+                <li>3a2. Notify User that they cannot have the same group name as another group</li>
+            </ol>
+        </li>
+    </ol>
+</blockquote>
+<img style="margin: 0 auto; display: block;" src="diagrams/DiscussionGroups.png"/>
+</body>
+</html>

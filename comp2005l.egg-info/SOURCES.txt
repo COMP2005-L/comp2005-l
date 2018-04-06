@@ -20,6 +20,43 @@ app/controllers/__pycache__/logout.cpython-36.pyc
 app/controllers/__pycache__/post.cpython-36.pyc
 app/controllers/__pycache__/register.cpython-36.pyc
 app/controllers/__pycache__/userprofile.cpython-36.pyc
+app/documentation/1a-gantt chart/COMP2005-L.pod
+app/documentation/1b-management structure and processes/processes_and_management.pdf
+app/documentation/1c&d- individual-allocation/Individual Allocation.pdf
+app/documentation/1e-ranking/Ranking of Group Members.pdf
+app/documentation/2a&b&c-requirements/Requirements Document.pdf
+app/documentation/2a&b&c-requirements/usecase/CreatePostUseCase.html
+app/documentation/2a&b&c-requirements/usecase/Discussion Group Use Case.html
+app/documentation/2a&b&c-requirements/usecase/PostViewingUseCase.html
+app/documentation/2a&b&c-requirements/usecase/Request access to Group Use Case.html
+app/documentation/2a&b&c-requirements/usecase/directMessaging.html
+app/documentation/2a&b&c-requirements/usecase/loginUserCase.html
+app/documentation/2a&b&c-requirements/usecase/postEditor.html
+app/documentation/2a&b&c-requirements/usecase/registration.html
+app/documentation/2a&b&c-requirements/usecase/subscription_notification.html
+app/documentation/2a&b&c-requirements/usecase/userProfile.html
+app/documentation/2a&b&c-requirements/usecase/diagrams/DiscussionGroups.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/Subscription_Notification.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/directMessaging.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/postEditor.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/registration.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/requestAccess.png
+app/documentation/2a&b&c-requirements/usecase/diagrams/userProfiles.png
+app/documentation/3a&b-highlevel and lowlevel design/Design Document.pdf
+app/documentation/6a- user_doc_prototype/User_Documentation_For_The_Prototype.pdf
+app/documentation/6b-project/Project Review.pdf
+app/documentation/meetings/meeting-1.doc
+app/documentation/meetings/meeting-10.doc
+app/documentation/meetings/meeting-11.doc
+app/documentation/meetings/meeting-2.doc
+app/documentation/meetings/meeting-3.doc
+app/documentation/meetings/meeting-4.doc
+app/documentation/meetings/meeting-5.doc
+app/documentation/meetings/meeting-6.doc
+app/documentation/meetings/meeting-7.doc
+app/documentation/meetings/meeting-8.doc
+app/documentation/meetings/meeting-9.doc
+app/documentation/meetings/template.doc
 app/models/Comment.py
 app/models/DirectMessaging.py
 app/models/DiscussionGroup.py
